@@ -1,0 +1,121 @@
+/* ===== Página de reservas y confirmación ===== */
+.pagina-reserva{background:var(--marfil)}
+.barra{background:var(--petroleo)}
+.barra .contenedor{display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px}
+.barra .logo img{height:64px}
+.volver{color:var(--marfil);text-decoration:none;font-weight:600;font-size:15px;padding:12px 0}
+.volver:hover{color:var(--dorado)}
+.reserva{padding-top:40px;padding-bottom:80px}
+.reserva .intro{margin:14px 0 32px;max-width:720px}
+.aviso-demo{background:#FFF3D6;border:1px solid #E7B04A;color:#5A3F0A;border-radius:12px;padding:14px 18px;margin-bottom:24px;font-size:15px}
+.reserva-grid{display:grid;gap:28px}
+@media(min-width:1000px){.reserva-grid{grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:start}}
+
+.paso{background:var(--blanco);border:1px solid var(--linea);border-radius:18px;padding:24px 18px;margin-bottom:20px}
+@media(min-width:700px){.paso{padding:30px}}
+.paso h2{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--petroleo);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.num{width:32px;height:32px;border-radius:50%;background:var(--petroleo);color:#fff;font-family:var(--sans);font-size:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* Calendario */
+.fechas-elegidas{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-end;margin-bottom:18px}
+.etq{display:block;font-size:13px;color:var(--texto-3);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.fechas-elegidas strong{font-size:18px;color:var(--petroleo)}
+.enlace{background:none;border:0;color:var(--dorado-osc);font-weight:700;font-size:15px;cursor:pointer;padding:10px 0;text-decoration:underline;font-family:inherit}
+.calendario{position:relative}
+.cal-cargando{padding:60px 0;text-align:center;color:var(--texto-3)}
+.cal-nav{position:absolute;top:-4px;left:0;right:0;display:flex;justify-content:space-between;pointer-events:none}
+.cal-flecha{pointer-events:auto;width:44px;height:44px;border-radius:50%;border:1px solid var(--linea);background:var(--blanco);font-size:26px;line-height:1;color:var(--petroleo);cursor:pointer}
+.cal-flecha:disabled{opacity:.3;cursor:default}
+.meses{display:grid;gap:28px}
+@media(min-width:760px){.meses{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}}
+.mes-titulo{text-align:center;font-weight:700;color:var(--petroleo);font-size:17px;height:38px;line-height:38px;margin-bottom:6px}
+.dias-semana,.dias{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.dias-semana span{text-align:center;font-size:12px;font-weight:700;color:var(--texto-3);padding:4px 0}
+.dia{aspect-ratio:1/1;min-height:40px;border:0;border-radius:10px;background:#EEF4F3;color:var(--petroleo);font:600 15px var(--sans);cursor:pointer;position:relative;padding:0}
+.dia:hover:not([disabled]){background:#D5E3E1;outline:2px solid var(--petroleo-3)}
+.dia.alta{background:#F6E6C4}
+.dia.alta::after{content:"";position:absolute;bottom:5px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--dorado-osc)}
+.dia[disabled]{cursor:default}
+.dia.pasado{background:transparent;color:#B9C3C4}
+.dia.ocupado{background:repeating-linear-gradient(135deg,#ECE7DD 0 5px,#E0D9CB 5px 10px);color:#A59F92;text-decoration:line-through}
+.dia.ocupado.posible{text-decoration:none;color:var(--petroleo)}
+.dia.rango{background:#CBDCDA;border-radius:4px}
+.dia.inicio,.dia.fin{background:var(--petroleo)!important;color:#fff!important;text-decoration:none}
+.dia.inicio::after,.dia.fin::after{display:none}
+.cal-pista{margin:14px 0 0;font-size:15px;font-weight:600;color:var(--dorado-osc);min-height:22px}
+.leyenda{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--texto-3)}
+.leyenda li{display:flex;align-items:center;gap:8px}
+.c{width:16px;height:16px;border-radius:4px;display:inline-block}
+.c-libre{background:#EEF4F3}.c-ocupado{background:repeating-linear-gradient(135deg,#ECE7DD 0 3px,#D6CEBD 3px 6px)}.c-alta{background:#F6E6C4}.c-sel{background:var(--petroleo)}
+
+/* Formulario */
+.fila-campos{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:flex-end}
+.campos{display:grid;gap:16px}
+@media(min-width:700px){.campos{grid-template-columns:repeat(2,minmax(0,1fr))}.campo.ancho{grid-column:span 2}}
+.campo{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600;color:var(--texto-2)}
+.campo input,.campo select,.campo textarea{font:400 16px var(--sans);color:var(--texto);padding:12px 14px;border:1px solid #CFC6B4;border-radius:10px;background:#fff;min-height:48px;width:100%}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:2px solid var(--petroleo-3);border-color:var(--petroleo-3)}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--texto-2);cursor:pointer;padding:8px 0}
+.check input{width:22px;height:22px;margin:0;flex-shrink:0;accent-color:var(--petroleo)}
+.oculto{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.politicas{margin-top:26px;background:var(--marfil);border-radius:14px;padding:20px}
+.politicas h3{font-size:17px;color:var(--petroleo);margin-bottom:10px}
+.politicas ul{margin:0 0 14px;padding-left:20px;font-size:15px;color:var(--texto-2);line-height:1.7}
+.error{background:#FDECEA;color:#8A1F11;border-radius:10px;padding:12px 16px;margin:20px 0 0;font-weight:600;font-size:15px}
+.btn-pagar{margin-top:22px;width:100%;min-height:56px;border:0;border-radius:999px;background:var(--verde-wa);color:#fff;font:700 18px var(--sans);cursor:pointer}
+.btn-pagar:hover:not(:disabled){background:var(--verde-wa-osc)}
+.btn-pagar:disabled{background:#9DB5AE;cursor:not-allowed}
+.seguro{display:flex;gap:8px;align-items:center;justify-content:center;font-size:14px;color:var(--texto-3);margin-top:14px;text-align:center}
+
+/* Resumen */
+.resumen{position:relative}
+@media(min-width:1000px){.resumen{position:sticky;top:20px}}
+.resumen-caja{background:var(--petroleo);color:#fff;border-radius:18px;padding:26px}
+.resumen-caja h2{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:14px}
+.resumen-vacio{color:#C4D5D7;font-size:15px}
+.resumen-fechas{color:var(--dorado);font-weight:600;font-size:15px;margin-bottom:14px}
+.lineas{list-style:none;padding:0;margin:0 0 12px;font-size:14px;color:#C4D5D7}
+.lineas li,.linea{display:flex;justify-content:space-between;gap:12px;padding:6px 0}
+.lineas li.descuento span:last-child{color:#9FE3B4;font-weight:600;white-space:nowrap}
+.lineas li.incluye{font-size:13px;opacity:.85}
+.linea{font-size:15px;color:#C4D5D7;border-top:1px solid rgba(255,255,255,.14);padding-top:10px}
+.linea.total{color:#fff;font-size:17px}
+.linea.anticipo{color:#fff;font-size:20px;border-top:0;padding-top:4px}
+.linea.anticipo strong{color:var(--dorado);font-family:var(--serif);font-size:26px}
+.resumen-error{background:rgba(255,255,255,.1);border-radius:10px;padding:12px;margin:12px 0 0;font-size:15px;color:#FFD9A0}
+.ayuda{font-size:15px;color:var(--texto-3);margin-top:14px;text-align:center}
+.ayuda-saldo{font-size:12.5px;color:#C4D5D7;opacity:.8;margin:6px 0 0}
+
+/* Confirmación */
+.confirmacion{max-width:640px;margin:0 auto;padding:60px 20px 90px;text-align:center}
+.confirmacion .icono{width:76px;height:76px;border-radius:50%;margin:0 auto 22px;display:flex;align-items:center;justify-content:center}
+.confirmacion .icono svg{width:40px;height:40px}
+.icono.ok{background:#DDF0E5;color:var(--verde-wa)}.icono.espera{background:#FFF3D6;color:var(--dorado-osc)}.icono.mal{background:#FDECEA;color:#8A1F11}
+.confirmacion .h2{margin-bottom:14px}
+.ficha{background:var(--blanco);border:1px solid var(--linea);border-radius:16px;padding:22px;margin:28px 0;text-align:left}
+.ficha div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--linea);font-size:16px}
+.ficha div:last-child{border-bottom:0}
+.ficha span{color:var(--texto-3)}
+.botones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+[hidden]{display:none !important}
+
+/* Reservas de actividades */
+.cabecera-actividad{display:grid;gap:22px;align-items:center;margin-bottom:28px}
+@media(min-width:800px){.cabecera-actividad{grid-template-columns:240px 1fr;gap:32px}}
+.cabecera-actividad img{width:100%;height:200px;object-fit:cover;border-radius:18px}
+@media(min-width:800px){.cabecera-actividad img{height:180px}}
+.nota{font-size:14px;color:var(--texto-3);margin-top:10px;line-height:1.5}
+.subpaso{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--petroleo);margin:26px 0 12px}
+.subpaso small{display:block;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--texto-3);margin-top:4px}
+.opciones{display:grid;gap:10px}
+@media(min-width:600px){.opciones{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
+.opcion{position:relative;display:block;cursor:pointer}
+.opcion input{position:absolute;opacity:0;pointer-events:none}
+.opcion>span{display:flex;flex-direction:column;gap:3px;border:1.5px solid rgba(17,47,56,.2);border-radius:14px;padding:14px 16px;background:#fff;min-height:52px;justify-content:center;transition:border-color .15s,background .15s}
+.opcion strong{font-size:16px;color:var(--petroleo)}
+.opcion small{font-size:13.5px;color:var(--texto-3);line-height:1.4}
+.opcion input:checked+span{border-color:var(--petroleo);background:#EEF4F3;box-shadow:inset 0 0 0 1px var(--petroleo)}
+.opcion input:focus-visible+span{outline:3px solid var(--dorado);outline-offset:2px}
+input[type="date"]{min-height:48px}
+.resumen-caja #res-incluye{color:#C4D5D7}
+.nota-confirmar{color:var(--dorado,#E8B04B);font-weight:600}

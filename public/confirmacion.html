@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estado de tu reserva · La María</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#112F38">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="reservas.css">
+</head>
+<body class="pagina-reserva">
+<header class="barra">
+  <div class="contenedor">
+    <a class="logo" href="index.html"><img src="img/logos/alojamiento-blanco.png" alt="La María · Alojamiento Reserva Natural" width="200" height="220"></a>
+    <a class="volver" href="index.html">← Volver al inicio</a>
+  </div>
+</header>
+
+<main class="confirmacion" id="contenido" aria-live="polite">
+  <div class="icono espera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+  <h1 class="h2">Revisando tu pago…</h1>
+  <p class="texto">Un momento, estamos consultando con Bold.</p>
+</main>
+
+<script src="js/tarifas.js"></script>
+<script>
+(function () {
+  var T = window.Tarifas, WA = 'https://wa.me/573113977479?text=';
+  var q = new URLSearchParams(location.search);
+  var id = q.get('id'), ref = q.get('ref');
+  try { ref = ref || sessionStorage.getItem('lamaria_ref'); } catch (e) {}
+  var intentos = 0;
+  var ICONOS = {
+    ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    espera: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    mal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg>'
+  };
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function pintar(tipo, titulo, texto, r, botones) {
+    var ficha = r && r.tipo === 'actividad' ? '<div class="ficha">' +
+      '<div><span>Referencia</span><strong>' + esc(r.referencia) + '</strong></div>' +
+      '<div><span>Actividad</span><strong>' + esc(r.actividad) + '</strong></div>' +
+      '<div><span>Día y hora preferida</span><strong>' + esc(r.fecha) + ' · ' + esc(r.hora) + '</strong></div>' +
+      '<div><span>Personas</span><strong>' + esc(r.personas) + '</strong></div>' +
+      (r.almuerzo ? '<div><span>Almuerzo</span><strong>' + esc(r.almuerzo) + '</strong></div>' : '') +
+      '<div><span>Total</span><strong>' + T.pesos(r.total) + '</strong></div>' +
+      '<div><span>Pagado</span><strong>' + T.pesos(r.anticipo) + '</strong></div>' +
+      (r.saldo ? '<div><span>Saldo el día de la actividad</span><strong>' + T.pesos(r.saldo) + '</strong></div>' : '') + '</div>'
+    : r ? '<div class="ficha">' +
+      '<div><span>Referencia</span><strong>' + esc(r.referencia) + '</strong></div>' +
+      '<div><span>Llegada</span><strong>' + esc(r.llegada) + ' · 9:00 a. m.</strong></div>' +
+      '<div><span>Salida</span><strong>' + esc(r.salida) + ' · 4:00 p. m.</strong></div>' +
+      '<div><span>Huéspedes</span><strong>' + esc(r.huespedes) + '</strong></div>' +
+      '<div><span>Total</span><strong>' + T.pesos(r.total) + '</strong></div>' +
+      '<div><span>Anticipo</span><strong>' + T.pesos(r.anticipo) + '</strong></div>' +
+      '<div><span>Saldo el día de llegada</span><strong>' + T.pesos(r.saldo) + '</strong></div></div>' : '';
+    document.getElementById('contenido').innerHTML = '<div class="icono ' + tipo + '">' + ICONOS[tipo] + '</div><h1 class="h2">' + titulo +
+      '</h1><p class="texto">' + texto + '</p>' + ficha + '<div class="botones">' + botones + '</div>';
+  }
+  function wa(msg, txt) { return '<a class="btn-wa" target="_blank" rel="noopener" href="' + WA + encodeURIComponent(msg) + '">' + txt + '</a>'; }
+  function consultar() {
+    if (!id && !ref) return pintar('mal', 'No encontramos tu reserva', 'Si ya pagaste, escríbenos por WhatsApp y te ayudamos.', null, wa('Hola, hice un pago para reservar en La María', 'Escribir por WhatsApp'));
+    fetch('/api/reservas/estado?' + new URLSearchParams(id ? { id: id } : { ref: ref }))
+      .then(function (x) { return x.json(); })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.error);
+        if (r.estado === 'confirmada') {
+          pintar('ok', '¡Tu reserva está confirmada, ' + esc(r.nombre) + '!', 'Bold te envió el comprobante de pago a tu correo. Guarda tu número de referencia; te escribiremos por WhatsApp.', r,
+            wa('Hola, acabo de reservar en La María. Mi referencia es ' + r.referencia, 'Escribirnos por WhatsApp'));
+        } else if (r.estado === 'rechazada') {
+          pintar('mal', 'El pago no fue aprobado', 'No se hizo ningún cobro. Puedes intentar de nuevo con otro medio de pago.', null,
+            '<a class="btn-wa" href="index.html#reservar">Intentar de nuevo</a>');
+        } else if (r.estado === 'vencida') {
+          pintar('mal', 'El tiempo para pagar se venció', 'No se hizo ningún cobro. Vuelve a hacer la reserva para generar un nuevo pago.', null,
+            '<a class="btn-wa" href="index.html#reservar">Reservar de nuevo</a>');
+        } else if (r.estado === 'esperando_pago' && intentos < 12) {
+          intentos++;
+          pintar('espera', 'Estamos esperando la confirmación del pago', 'Algunos pagos por PSE tardan unos minutos. Esta página se actualiza sola.', null, '');
+          setTimeout(consultar, 5000);
+        } else {
+          pintar('espera', 'Tu pago está en revisión', 'Te escribiremos para confirmar tu reserva. Si tienes dudas, escríbenos por WhatsApp.', r,
+            wa('Hola, hice un pago en La María con la referencia ' + r.referencia, 'Escribir por WhatsApp'));
+        }
+      })
+      .catch(function () {
+        pintar('mal', 'No pudimos consultar tu reserva', 'Si ya pagaste, tranquilo: escríbenos por WhatsApp con tu comprobante y lo revisamos.', null,
+          wa('Hola, hice un pago para reservar en La María', 'Escribir por WhatsApp'));
+      });
+  }
+  consultar();
+})();
+</script>
+</body>
+</html>

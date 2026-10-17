@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel de reservas · La María</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<style>
+  :root { --verde: #112F38; --arena: #F4EFE6; --borde: #DDD5C7; --texto: #1d1d1b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; background: var(--arena); color: var(--texto); }
+  header { background: var(--verde); color: #fff; padding: 16px; }
+  header h1 { margin: 0; font-size: 20px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  form, .filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  input, select, button { font: inherit; padding: 10px 12px; border: 1px solid var(--borde); border-radius: 8px; }
+  button { background: var(--verde); color: #fff; border: 0; cursor: pointer; }
+  .tarjeta { background: #fff; border: 1px solid var(--borde); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+  .tarjeta h2 { margin: 0 0 4px; font-size: 17px; }
+  .fila { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14px; }
+  .estado { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 13px; font-weight: 600; }
+  .confirmada { background: #DCF2E3; color: #145A2C; }
+  .esperando_pago { background: #FFF2CC; color: #7A5600; }
+  .rechazada, .vencida { background: #F6DADA; color: #7D1F1F; }
+  .vacio, .error { padding: 20px; text-align: center; }
+  .error { color: #7D1F1F; }
+  a { color: var(--verde); }
+</style>
+</head>
+<body>
+<header><h1>Panel de reservas · La María</h1></header>
+<main>
+  <form id="entrar">
+    <input type="password" id="clave" placeholder="Clave del panel" autocomplete="current-password" required>
+    <button>Ver reservas</button>
+  </form>
+  <div class="filtros" id="filtros" hidden>
+    <select id="filtro">
+      <option value="pagadas">Solo pagadas</option>
+      <option value="todas">Todas (incluye sin pagar)</option>
+    </select>
+  </div>
+  <div id="lista"></div>
+</main>
+<script>
+(function () {
+  var datos = [];
+  function pesos(n) { return '$' + Math.round(n || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var NOMBRES = { confirmada: 'Pagada', esperando_pago: 'Esperando pago', rechazada: 'Pago rechazado', vencida: 'No pagó (vencida)' };
+
+  function pintar() {
+    var filtro = document.getElementById('filtro').value;
+    var lista = datos.filter(function (r) { return filtro === 'todas' || r.estado === 'confirmada'; });
+    if (!lista.length) { document.getElementById('lista').innerHTML = '<div class="vacio">Todavía no hay reservas aquí.</div>'; return; }
+    document.getElementById('lista').innerHTML = lista.map(function (r) {
+      var c = r.cliente || {};
+      var cel = String(c.celular || '').replace(/\D/g, '');
+      if (cel.length === 10) cel = '57' + cel;
+      var que = r.tipo === 'actividad'
+        ? esc(r.actividad) + ' · ' + esc(r.fecha) + ' · ' + esc(r.hora) + ' · ' + esc(r.personas) + ' personas' + (r.almuerzo ? ' · almuerzo ' + esc(r.almuerzo) : '')
+        : 'Alojamiento · llega ' + esc(r.llegada) + ' · sale ' + esc(r.salida) + ' · ' + esc(r.huespedes) + ' huéspedes' + (r.mascotas ? ' · con mascota' : '');
+      var pagado = r.tipo === 'actividad' ? r.pagado : r.anticipo;
+      return '<div class="tarjeta"><h2>' + esc(c.nombre) + ' <span class="estado ' + esc(r.estado) + '">' + (NOMBRES[r.estado] || esc(r.estado)) + '</span></h2>' +
+        '<div class="fila"><span>' + que + '</span></div>' +
+        '<div class="fila"><span>Total ' + pesos(r.total) + '</span><span>Pagado ' + pesos(pagado) + '</span><span>Saldo ' + pesos(r.saldo) + '</span></div>' +
+        '<div class="fila"><span>' + esc(c.tipoDocumento) + ' ' + esc(c.documento) + '</span><span>' + esc(c.email) + '</span>' +
+        '<a target="_blank" rel="noopener" href="https://wa.me/' + cel + '">WhatsApp ' + esc(c.celular) + '</a></div>' +
+        '<div class="fila"><span>Referencia ' + esc(r.referencia) + '</span><span>Cómo supo: ' + esc(r.comoSupo) + '</span><span>Creada ' + esc(new Date(r.creado).toLocaleString('es-CO')) + '</span></div>' +
+        (r.comentarios ? '<div class="fila"><span>Comentarios: ' + esc(r.comentarios) + '</span></div>' : '') + '</div>';
+    }).join('');
+  }
+
+  function cargar(clave) {
+    document.getElementById('lista').innerHTML = '<div class="vacio">Cargando…</div>';
+    fetch('/api/admin', { headers: { 'X-Clave': clave } })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j.ok) throw new Error(j.error);
+        try { sessionStorage.setItem('lamaria_admin', clave); } catch (e) {}
+        datos = j.reservas;
+        document.getElementById('entrar').hidden = true;
+        document.getElementById('filtros').hidden = false;
+        pintar();
+      })
+      .catch(function (e) { document.getElementById('lista').innerHTML = '<div class="error">' + esc(e.message || 'No se pudo cargar.') + '</div>'; });
+  }
+
+  document.getElementById('entrar').addEventListener('submit', function (ev) { ev.preventDefault(); cargar(document.getElementById('clave').value); });
+  document.getElementById('filtro').addEventListener('change', pintar);
+  try { var guardada = sessionStorage.getItem('lamaria_admin'); if (guardada) cargar(guardada); } catch (e) {}
+})();
+</script>
+</body>
+</html>

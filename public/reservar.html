@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reservar · La María Alojamiento Reserva Natural</title>
+<meta name="description" content="Reserva en línea La María, finca con piscina infinita en una reserva natural cerca de Armenia, Quindío. Paga el anticipo con PSE, Nequi, tarjeta o Bancolombia.">
+<meta name="theme-color" content="#112F38">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="reservas.css">
+</head>
+<body class="pagina-reserva">
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="logo" href="index.html"><img src="img/logos/alojamiento-blanco.png" alt="La María · Alojamiento Reserva Natural" width="200" height="220"></a>
+    <a class="volver" href="index.html">← Volver al inicio</a>
+  </div>
+</header>
+
+<main class="contenedor reserva">
+  <div class="aviso-demo" id="aviso-demo" hidden>
+    <strong>Vista de demostración.</strong> Así funcionará la reserva; las fechas ocupadas son de ejemplo y no se cobra nada.
+  </div>
+
+  <h1 class="h2">Reserva tu estadía</h1>
+  <p class="texto intro">Elige tus fechas, cuéntanos cuántos son y paga el anticipo del 50% para confirmar. El saldo se paga el día de llegada, por transferencia, Nequi o enlace de pago (tarjeta o PSE).</p>
+
+  <div class="reserva-grid">
+    <!-- ===== Columna izquierda: calendario y formulario ===== -->
+    <div class="reserva-principal">
+
+      <section class="paso" aria-labelledby="t-fechas">
+        <h2 id="t-fechas"><span class="num">1</span> Fechas</h2>
+        <div class="fechas-elegidas">
+          <div><span class="etq">Llegada</span><strong id="txt-llegada">Elige en el calendario</strong></div>
+          <div><span class="etq">Salida</span><strong id="txt-salida">—</strong></div>
+          <button type="button" class="enlace" id="btn-limpiar" hidden>Cambiar fechas</button>
+        </div>
+        <div class="calendario" id="calendario" aria-live="polite">
+          <div class="cal-cargando">Cargando disponibilidad…</div>
+        </div>
+        <ul class="leyenda">
+          <li><span class="c c-libre"></span>Disponible</li>
+          <li><span class="c c-ocupado"></span>Ocupado</li>
+          <li><span class="c c-alta"></span>Temporada alta</li>
+          <li><span class="c c-sel"></span>Tu estadía</li>
+        </ul>
+      </section>
+
+      <section class="paso" aria-labelledby="t-huespedes">
+        <h2 id="t-huespedes"><span class="num">2</span> Huéspedes</h2>
+        <div class="fila-campos">
+          <label class="campo">
+            <span>Número de personas</span>
+            <select id="huespedes"></select>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="mascotas">
+            <span>Vamos con mascota</span>
+          </label>
+        </div>
+      </section>
+
+      <form class="paso" id="formulario" novalidate aria-labelledby="t-datos">
+        <h2 id="t-datos"><span class="num">3</span> Tus datos</h2>
+        <div class="campos">
+          <label class="campo ancho"><span>Nombre completo</span><input id="nombre" autocomplete="name" required maxlength="80"></label>
+          <label class="campo corto"><span>Documento</span>
+            <select id="tipo-doc"><option value="CC">Cédula</option><option value="CE">Cédula de extranjería</option><option value="PP">Pasaporte</option><option value="NIT">NIT</option></select>
+          </label>
+          <label class="campo"><span>Número de documento</span><input id="documento" inputmode="numeric" required maxlength="20"></label>
+          <label class="campo"><span>Correo electrónico</span><input id="email" type="email" autocomplete="email" required maxlength="100"></label>
+          <label class="campo"><span>Celular (WhatsApp)</span><input id="celular" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" placeholder="300 123 4567"></label>
+          <label class="campo ancho"><span>¿Cómo supiste de nosotros? *</span>
+            <select id="como-supo" required>
+              <option value="">Elige una opción</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="TikTok">TikTok</option>
+              <option value="Google (búsqueda)">Google (búsqueda)</option>
+              <option value="Google Maps">Google Maps</option>
+              <option value="Airbnb">Airbnb</option>
+              <option value="Booking">Booking</option>
+              <option value="Vrbo">Vrbo</option>
+              <option value="Recomendación de un amigo o familiar">Recomendación de un amigo o familiar</option>
+              <option value="Ya nos habías visitado">Ya nos habías visitado</option>
+              <option value="Agencia o guía de turismo">Agencia o guía de turismo</option>
+              <option value="Jhon">Jhon</option>
+              <option value="Grupo de observadores de aves">Grupo de observadores de aves</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </label>
+          <label class="campo ancho" id="campo-como-supo-otro" hidden><span>¿Cuál?</span><input id="como-supo-otro" maxlength="80" placeholder="Cuéntanos dónde nos viste"></label>
+          <label class="campo ancho"><span>Comentarios (opcional)</span><textarea id="comentarios" rows="3" maxlength="600" placeholder="Hora aproximada de llegada, celebraciones, cabalgata…"></textarea></label>
+          <label class="oculto" aria-hidden="true">Sitio web <input id="sitio" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="politicas">
+          <h3>Antes de pagar</h3>
+          <ul>
+            <li>Ingreso 9:00 a. m. · Salida 4:00 p. m.</li>
+            <li>Desayuno americano incluido (huevos, chocolate o café, pan o arepa y fruta).</li>
+            <li>Las reservas con un día de anticipación o menos quedan sujetas a confirmación: te escribimos por WhatsApp para confirmártela.</li>
+            <li>Pagas hoy el 50%. El saldo se paga el día de llegada, por transferencia, Nequi o enlace de pago (tarjeta o PSE).</li>
+            <li>Máximo 11 personas, incluidas las visitas. Las visitas no pueden pernoctar.</li>
+            <li>Música alta y jacuzzi hasta las 11:00 p. m. No se permite fumar dentro de la casa.</li>
+            <li>Mascotas bienvenidas con su cama, cobija, toalla y juguetes.</li>
+            <li>Los últimos 10 km son por vía destapada.</li>
+            <li><strong>Cancelación gratuita hasta 5 días antes de la llegada:</strong> te devolvemos el 100% del anticipo. Con menos de 5 días, el anticipo (50%) no es reembolsable.</li>
+          </ul>
+          <label class="check"><input type="checkbox" id="acepta-normas" required><span>Acepto las normas de la casa y la política de cancelación.</span></label>
+          <label class="check"><input type="checkbox" id="acepta-datos" required><span>Autorizo el tratamiento de mis datos personales para gestionar mi reserva (Ley 1581 de 2012).</span></label>
+        </div>
+
+        <p class="error" id="error" role="alert" hidden></p>
+        <button type="submit" class="btn-pagar" id="btn-pagar" disabled>Elige tus fechas</button>
+        <p class="seguro">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Pago seguro con Bold: tarjetas, PSE, Nequi y Botón Bancolombia.
+        </p>
+      </form>
+    </div>
+
+    <!-- ===== Columna derecha: resumen ===== -->
+    <aside class="resumen" aria-labelledby="t-resumen">
+      <div class="resumen-caja">
+        <h2 id="t-resumen">Tu reserva</h2>
+        <div id="resumen-vacio" class="resumen-vacio">Elige la llegada y la salida en el calendario para ver el valor.</div>
+        <div id="resumen-detalle" hidden>
+          <p class="resumen-fechas" id="res-fechas"></p>
+          <ul class="lineas" id="res-lineas"></ul>
+          <div class="linea total"><span>Total</span><strong id="res-total"></strong></div>
+          <div class="linea anticipo"><span>Anticipo hoy (50%)</span><strong id="res-anticipo"></strong></div>
+          <div class="linea"><span>Saldo el día de llegada</span><span id="res-saldo"></span></div>
+          <p class="ayuda-saldo nota-confirmar" id="res-confirmar" hidden>Llegada para hoy o mañana: tu reserva queda sujeta a confirmación. Te escribimos por WhatsApp.</p>
+          <p class="ayuda-saldo">El saldo se paga por transferencia, Nequi o enlace de pago (tarjeta o PSE).</p>
+        </div>
+        <p class="resumen-error" id="res-error" hidden></p>
+      </div>
+      <p class="ayuda">La María · Registro Nacional de Turismo (RNT) 163429</p>
+      <p class="ayuda">¿Dudas o un grupo especial? <a class="js-wa" href="#">Escríbenos por WhatsApp</a></p>
+    </aside>
+  </div>
+</main>
+
+<script src="js/tarifas.js"></script>
+<script src="js/reservar.js"></script>
+</body>
+</html>

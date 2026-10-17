@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reserva tu avistamiento de aves · Reserva Natural La María</title>
+<meta name="description" content="Reserva en línea un recorrido de avistamiento de aves en la Reserva Natural La María, cerca de Armenia, Quindío.">
+<meta name="theme-color" content="#112F38">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="reservas.css">
+</head>
+<body class="pagina-reserva" data-actividad="aves">
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="logo" href="index.html"><img src="img/logos/explora-blanco.png" alt="La María · Reserva Natural"></a>
+    <a class="volver" href="index.html#reservar">← Volver</a>
+  </div>
+</header>
+
+<main class="contenedor reserva">
+  <div class="cabecera-actividad">
+    <img src="img/aves.jpg" alt="">
+    <div>
+      <h1 class="h2">Reserva tu avistamiento de aves</h1>
+      <p class="texto intro">115 especies registradas y muchas por descubrir. Madruga con nosotros y recorre la reserva buscando aves. Grupos de hasta 8 personas.</p>
+    </div>
+  </div>
+
+  <div class="reserva-grid">
+    <div class="reserva-principal">
+
+      <section class="paso" aria-labelledby="t-cuando">
+        <h2 id="t-cuando"><span class="num">1</span> Día y hora</h2>
+        <div class="opciones" role="radiogroup" aria-label="Modalidad">
+          <label class="opcion"><input type="radio" name="modalidad" value="sin-guia" checked><span><strong>Sin guía profesional</strong><small>$60.000 por persona</small></span></label>
+          <label class="opcion"><input type="radio" name="modalidad" value="con-guia"><span><strong>Con guía profesional</strong><small>$120.000 por persona · incluye guía, hidratación y seguro · sujeto a confirmación</small></span></label>
+        </div>
+        <div class="fila-campos">
+          <label class="campo"><span>Día</span><input type="date" id="fecha" required></label>
+          <label class="campo"><span>Hora preferida</span><select id="hora"></select></label>
+        </div>
+        <p class="nota" id="nota-fecha"></p>
+        <p class="nota">Todos los días. La hora la confirmamos contigo por WhatsApp.</p>
+      </section>
+
+      <section class="paso" aria-labelledby="t-grupo">
+        <h2 id="t-grupo"><span class="num">2</span> Grupo y almuerzo</h2>
+        <div class="fila-campos">
+          <label class="campo"><span>Personas mayores de 6 años</span><select id="adultos"></select></label>
+          <label class="campo" id="campo-ninos"><span>Niños de 6 años o menos</span><select id="ninos"></select></label>
+        </div>
+        <p class="nota">Los niños de 6 años o menos pagan la mitad. Máximo <span id="max-personas"></span> personas por grupo; para grupos más grandes, <a class="js-wa" href="#">escríbenos</a>.</p>
+
+        <h3 class="subpaso">¿Quieren almuerzo? <small><span id="almuerzo-precio"></span> por persona (niños también) · todo el grupo come lo mismo</small></h3>
+        <div class="opciones" role="radiogroup" aria-label="Almuerzo">
+          <label class="opcion"><input type="radio" name="almuerzo" value="" checked><span><strong>Sin almuerzo</strong></span></label>
+          <label class="opcion"><input type="radio" name="almuerzo" value="Patacón"><span><strong>Patacón</strong></span></label>
+          <label class="opcion"><input type="radio" name="almuerzo" value="Fiambre"><span><strong>Fiambre</strong></span></label>
+        </div>
+      </section>
+
+      <form class="paso" id="formulario" novalidate aria-labelledby="t-datos">
+        <h2 id="t-datos"><span class="num">3</span> Tus datos y pago</h2>
+        <div class="campos">
+          <label class="campo ancho"><span>Nombre completo</span><input id="nombre" autocomplete="name" required maxlength="80"></label>
+          <label class="campo corto"><span>Documento</span>
+            <select id="tipo-doc"><option value="CC">Cédula</option><option value="CE">Cédula de extranjería</option><option value="PP">Pasaporte</option><option value="NIT">NIT</option></select>
+          </label>
+          <label class="campo"><span>Número de documento</span><input id="documento" inputmode="numeric" required maxlength="20"></label>
+          <label class="campo"><span>Correo electrónico</span><input id="email" type="email" autocomplete="email" required maxlength="100"></label>
+          <label class="campo"><span>Celular (WhatsApp)</span><input id="celular" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" placeholder="300 123 4567"></label>
+          <label class="campo ancho"><span>¿Cómo supiste de nosotros? *</span>
+            <select id="como-supo" required>
+              <option value="">Elige una opción</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="TikTok">TikTok</option>
+              <option value="Google (búsqueda)">Google (búsqueda)</option>
+              <option value="Google Maps">Google Maps</option>
+              <option value="Airbnb">Airbnb</option>
+              <option value="Booking">Booking</option>
+              <option value="Vrbo">Vrbo</option>
+              <option value="Recomendación de un amigo o familiar">Recomendación de un amigo o familiar</option>
+              <option value="Ya nos habías visitado">Ya nos habías visitado</option>
+              <option value="Agencia o guía de turismo">Agencia o guía de turismo</option>
+              <option value="Jhon">Jhon</option>
+              <option value="Grupo de observadores de aves">Grupo de observadores de aves</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </label>
+          <label class="campo ancho" id="campo-como-supo-otro" hidden><span>¿Cuál?</span><input id="como-supo-otro" maxlength="80" placeholder="Cuéntanos dónde nos viste"></label>
+          <label class="campo ancho"><span>Comentarios (opcional)</span><textarea id="comentarios" rows="3" maxlength="600" placeholder="Celebraciones, experiencia del grupo, alguna necesidad especial…"></textarea></label>
+          <label class="oculto" aria-hidden="true">Sitio web <input id="sitio" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <h3 class="subpaso">¿Cuánto quieres pagar hoy?</h3>
+        <div class="opciones" role="radiogroup" aria-label="Pago">
+          <label class="opcion"><input type="radio" name="pago" value="anticipo" checked><span><strong>50% para reservar</strong><small><span id="pago-50"></span> hoy · el resto el día de la actividad</small></span></label>
+          <label class="opcion"><input type="radio" name="pago" value="completo"><span><strong>100% de una vez</strong><small><span id="pago-100"></span> hoy</small></span></label>
+        </div>
+
+        <div class="politicas">
+          <h3>Antes de pagar</h3>
+          <ul>
+            <li><strong>Qué llevar:</strong> Tus binoculares (no se alquilan), botas, repelente y bloqueador solar, ropa de cambio.</li>
+            <li>Los últimos 10 km para llegar a la finca son por vía destapada.</li>
+            <li><strong>Cancelación gratuita hasta 5 días antes:</strong> te devolvemos lo que pagaste. Con menos de 5 días se cobra el 50% del valor total.</li>
+          </ul>
+          <label class="check"><input type="checkbox" id="acepta-normas" required><span>Acepto las condiciones y la política de cancelación.</span></label>
+          <label class="check"><input type="checkbox" id="acepta-datos" required><span>Autorizo el tratamiento de mis datos personales para gestionar mi reserva (Ley 1581 de 2012).</span></label>
+        </div>
+
+        <p class="error" id="error" role="alert" hidden></p>
+        <button type="submit" class="btn-pagar" id="btn-pagar" disabled>Elige el día</button>
+        <p class="seguro">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Pago seguro con Bold: tarjetas, PSE, Nequi y Botón Bancolombia.
+        </p>
+      </form>
+    </div>
+
+    <aside class="resumen" aria-labelledby="t-resumen">
+      <div class="resumen-caja">
+        <h2 id="t-resumen">Tu reserva</h2>
+        <p class="resumen-fechas"><strong id="res-nombre"></strong><br><span id="res-cuando"></span></p>
+        <ul class="lineas" id="res-lineas"></ul>
+        <div class="linea total"><span>Total</span><strong id="res-total"></strong></div>
+        <div class="linea anticipo"><span id="res-pagar-etq">Pagas hoy</span><strong id="res-pagar"></strong></div>
+        <div class="linea" id="linea-saldo"><span>Saldo el día de la actividad</span><span id="res-saldo"></span></div>
+        <p class="nota" id="res-incluye" hidden></p>
+        <p class="nota nota-confirmar" id="res-confirmar" hidden>Reserva sujeta a confirmación: te escribimos por WhatsApp para confirmártela.</p>
+        <p class="resumen-error" id="res-error" hidden></p>
+      </div>
+      <p class="ayuda">¿Dudas o un grupo especial? <a class="js-wa" href="#">Escríbenos por WhatsApp</a></p>
+    </aside>
+  </div>
+</main>
+
+<script src="js/actividades.js"></script>
+<script src="js/actividad.js"></script>
+</body>
+</html>
