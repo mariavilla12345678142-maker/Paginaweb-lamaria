@@ -1,0 +1,33 @@
+/* Página: listado de aves */
+.listado-aves{padding-top:40px;padding-bottom:70px}
+.listado-aves .intro{max-width:720px;margin:14px 0 30px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.filtros-aves{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center;margin-bottom:18px}
+.buscar-ave{flex:1 1 280px}
+.buscar-ave input{width:100%;font:inherit;font-size:16px;padding:13px 16px;border:1px solid #CFC6B2;border-radius:999px;background:#fff;color:#1E3328}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14px;padding:9px 16px;border-radius:999px;border:1px solid #CFC6B2;background:transparent;color:#1E3328;cursor:pointer}
+.chip.activo{background:#1E3328;border-color:#1E3328;color:#fff}
+.conteo{font-size:14px;color:#6B6A5E;margin:0;width:100%}
+.tabla-aves ul{list-style:none;margin:0;padding:0}
+.ave-fila{display:grid;gap:2px 18px;padding:14px 4px;border-bottom:1px solid #E3DCCB}
+.ave-fila[hidden]{display:none}
+.ave-encabezado{display:none;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A7A55;border-bottom:1px solid #CFC6B2}
+.ave-es{font-family:var(--serif);font-size:21px;font-weight:600;color:#1E3328;line-height:1.25}
+.ave-cien{color:#3D4A40}
+.ave-en,.ave-fam{font-size:15px;color:#6B6A5E}
+.ave-fam{display:none}
+.etq{display:inline-block;vertical-align:middle;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-left:6px}
+.etq-mig{background:#E4ECF2;color:#24506A}
+.etq-end{background:#F4E3C2;color:#6E470B}
+.etq-casi{background:#EFE9D8;color:#6E5A2B}
+.sin-resultados{padding:24px 4px;color:#6B6A5E}
+.cta-aves{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.cta-aves p{font-family:var(--serif);font-size:24px;margin:0;color:#1E3328}
+.credito-aves{margin-top:26px;font-size:13px;color:#8A8A7E}
+@media(min-width:860px){
+  .ave-fila{grid-template-columns:1.3fr 1.1fr 1.1fr .8fr;align-items:baseline}
+  .ave-encabezado{display:grid}
+  .ave-fam{display:block}
+  .ave-es{font-size:19px}
+}

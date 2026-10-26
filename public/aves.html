@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listado de aves · Reserva Natural La María</title>
+<meta name="description" content="Listado de las aves registradas en la Reserva Natural La María (El Caimo, Armenia, Quindío): nombre común, nombre científico y nombre en inglés.">
+<meta name="theme-color" content="#1E3328">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="reservas.css">
+<link rel="stylesheet" href="aves.css">
+</head>
+<body class="pagina-reserva pagina-aves">
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="logo" href="index.html"><img src="img/logos/explora-blanco.png" alt="La María · Reserva Natural"></a>
+    <a class="volver" href="index.html#experiencias">← Volver</a>
+  </div>
+</header>
+
+<main class="contenedor listado-aves">
+  <p class="eyebrow">La María Explora</p>
+  <h1 class="h2">Las aves de La María</h1>
+  <p class="texto intro">Estas son las <strong>109 especies</strong> que hemos registrado en la reserva hasta hoy. Entre ellas hay <strong>2 endémicas</strong> (solo viven en Colombia), <strong>2 casi endémicas</strong> y <strong>10 migratorias</strong> que llegan desde Norteamérica. Estamos seguros de que faltan muchas más: ven y ayúdanos a encontrarlas.</p>
+
+  <div class="filtros-aves">
+    <label class="buscar-ave"><span class="sr">Buscar un ave</span><input type="search" id="buscar" placeholder="Buscar: colibrí, tangara, Tyrannus…" autocomplete="off"></label>
+    <div class="chips" role="group" aria-label="Filtrar">
+      <button type="button" class="chip activo" data-filtro="">Todas</button>
+      <button type="button" class="chip" data-filtro="end">Endémicas y casi endémicas</button>
+      <button type="button" class="chip" data-filtro="mig">Migratorias</button>
+    </div>
+    <p class="conteo" id="conteo" aria-live="polite">109 especies</p>
+  </div>
+
+  <div class="tabla-aves">
+    <div class="ave-fila ave-encabezado" aria-hidden="true"><div>Nombre común</div><div>Nombre científico</div><div>Nombre en inglés</div><div>Familia</div></div>
+    <ul id="lista-aves">
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Amazilia coliazul </div><div class="ave-cien"><i>Saucerottia saucerrottei</i></div><div class="ave-en">Steely-vented Hummingbird</div><div class="ave-fam">Trochilidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Andarrios maculado <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Actitis macularius</i></div><div class="ave-en">Spotted Sandpiper</div><div class="ave-fam">Scolopacidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Arañero cejiblanco </div><div class="ave-cien"><i>Basileuterus culicivorus</i></div><div class="ave-en">Golden-crowned Warbler</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Arañero ribereño </div><div class="ave-cien"><i>Myiothlypis fulvicauda</i></div><div class="ave-en">Buff-rumped Warbler</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Atrapamoscas cuidapuentes </div><div class="ave-cien"><i>Sayornis nigricans</i></div><div class="ave-en">Black Phoebe</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Atrapamoscas verdoso <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Empidonax virescens</i></div><div class="ave-en">Acadian Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Azulejo común </div><div class="ave-cien"><i>Thraupis episcopus</i></div><div class="ave-en">Blue-gray Tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo="casi"><div class="ave-es">Batará carcajada <span class="etq etq-casi">Casi endémica</span></div><div class="ave-cien"><i>Thamnophilus multistriatus</i></div><div class="ave-en">Bar-crested Antshrike</div><div class="ave-fam">Thamnophilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Batará mayor </div><div class="ave-cien"><i>Taraba major</i></div><div class="ave-en">Great Antshrike</div><div class="ave-fam">Thamnophilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Bichofue </div><div class="ave-cien"><i>Pitangus sulphuratus</i></div><div class="ave-en">Great Kiskadee</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Buco Bigotudo </div><div class="ave-cien"><i>Malacoptila mystacalis</i></div><div class="ave-en">Moustached puffbird</div><div class="ave-fam">Bucconidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Calandria Dorso </div><div class="ave-cien"><i>Icterus chrysater</i></div><div class="ave-en">Yellow Backed oriole</div><div class="ave-fam">Icteridae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Canario común </div><div class="ave-cien"><i>Sicalis flaveola</i></div><div class="ave-en">Saffron Finch</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Caracara crestado </div><div class="ave-cien"><i>Caracara cheriway</i></div><div class="ave-en">Crested Caracara</div><div class="ave-fam">Falconidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Caracolera selvático </div><div class="ave-cien"><i>Chondrohierax uncinatus</i></div><div class="ave-en">Hook-billed Kite</div><div class="ave-fam">Accipitridae</div></li>
+      <li class="ave-fila" data-tipo="end"><div class="ave-es">Carpinterito punteado <span class="etq etq-end">Endémica</span></div><div class="ave-cien"><i>Picumnus granadensis</i></div><div class="ave-en">Grayish Piculet</div><div class="ave-fam">Picidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Carpintero Culirrojo </div><div class="ave-cien"><i>Dryobates kirkii</i></div><div class="ave-en">Red-rumped Woodpecker</div><div class="ave-fam">Picidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Carpintero de los robles </div><div class="ave-cien"><i>Melanerpes formicivorus</i></div><div class="ave-en">Acorn Woodpecker</div><div class="ave-fam">Picidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Carpintero habado </div><div class="ave-cien"><i>Melanerpes rubricapillus</i></div><div class="ave-en">Red-crowned Woodpecker</div><div class="ave-fam">Picidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Carpintero pechipunteado </div><div class="ave-cien"><i>Colaptes punctigula</i></div><div class="ave-en">Spot-breasted Woodpecker</div><div class="ave-fam">Picidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Carpintero real </div><div class="ave-cien"><i>Dryocopus lineatus</i></div><div class="ave-en">Lineated Woodpecker</div><div class="ave-fam">Picidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Chamicero pizarra </div><div class="ave-cien"><i>Synallaxis brachyura</i></div><div class="ave-en">Slaty Spinetail</div><div class="ave-fam">Furnariidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Chamón parásito </div><div class="ave-cien"><i>Molothrus bonariensis</i></div><div class="ave-en">Shiny Cowbird</div><div class="ave-fam">Icteridae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Chilacoa </div><div class="ave-cien"><i>Aramides cajaneus</i></div><div class="ave-en">Gray-cowled Wood-Rail</div><div class="ave-fam">Rallidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Coclí </div><div class="ave-cien"><i>Theristicus caudatus</i></div><div class="ave-en">Buff-necked Ibis</div><div class="ave-fam">Threskiornithidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Colibrí colirrufo </div><div class="ave-cien"><i>Amazilia tzacatl</i></div><div class="ave-en">Rufous-tailed Hummingbird</div><div class="ave-fam">Trochilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Colibrí nuqui blanco </div><div class="ave-cien"><i>Florisuga mellivora</i></div><div class="ave-en">White-necked Jacobin</div><div class="ave-fam">Trochilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Coquito Ibis </div><div class="ave-cien"><i>Phimosus infuscatus</i></div><div class="ave-en">Bare-faced Ibis</div><div class="ave-fam">Threskiornithidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Cucarachero común </div><div class="ave-cien"><i>Troglodytes musculus</i></div><div class="ave-en">Southern House Wren</div><div class="ave-fam">Troglodytidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Cucarachero pechiblanco </div><div class="ave-cien"><i>Henicorhina leucosticta</i></div><div class="ave-en">White-breasted Wood-Wren</div><div class="ave-fam">Troglodytidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Cucarachero Ruiseñor </div><div class="ave-cien"><i>Microcerculus marginatus</i></div><div class="ave-en">Scaly-breasted Wren</div><div class="ave-fam">Troglodytidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Cuco ardilla </div><div class="ave-cien"><i>Piaya cayana</i></div><div class="ave-en">Squirrel Cuckoo</div><div class="ave-fam">Cuculidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Cuco enano </div><div class="ave-cien"><i>Coccycua pumila</i></div><div class="ave-en">Dwarf Cuckoo</div><div class="ave-fam">Cuculidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Curruca tropical </div><div class="ave-cien"><i>Polioptila plumbea</i></div><div class="ave-en">Tropical Gnatcatcher</div><div class="ave-fam">Polioptilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Elenia copetona </div><div class="ave-cien"><i>Elaenia flavogaster</i></div><div class="ave-en">Yellow-bellied Elaenia</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Elenia verdosa </div><div class="ave-cien"><i>Myiopagis viridicata</i></div><div class="ave-en">Greenish Elaenia</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Ermitaño Hirsuto </div><div class="ave-cien"><i>Glaucis hirsutus</i></div><div class="ave-en">Rufous-breasted hermit</div><div class="ave-fam">Trochilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Espatulilla común </div><div class="ave-cien"><i>Todirostrum cinereum</i></div><div class="ave-en">Common Tody-Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Espatulilla rastrojera </div><div class="ave-cien"><i>Poecilotriccus sylvia</i></div><div class="ave-en">Slate-headed Tody-Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Espiguero capuchino </div><div class="ave-cien"><i>Sporophila nigricollis</i></div><div class="ave-en">Yellow-bellied Seedeater</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Espiguero ladrillo </div><div class="ave-cien"><i>Sporophila minuta</i></div><div class="ave-en">Ruddy-breasted Seedeater</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Espiguero saltarin </div><div class="ave-cien"><i>Volatinia jacarina</i></div><div class="ave-en">Blue-black Grassquit</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Eufonia gorgiamarilla </div><div class="ave-cien"><i>Euphonia laniirostris</i></div><div class="ave-en">Thick-billed Euphonia</div><div class="ave-fam">Fringillidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Gallinazo común </div><div class="ave-cien"><i>Coragyps atratus</i></div><div class="ave-en">Black Vulture</div><div class="ave-fam">Cathartidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Gallineta negruzca </div><div class="ave-cien"><i>Pardirallus nigricans</i></div><div class="ave-en">Blackish Rail</div><div class="ave-fam">Rallidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Garrapatero pico liso </div><div class="ave-cien"><i>Crotophaga ani</i></div><div class="ave-en">Smooth billed ani</div><div class="ave-fam">Cuculidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Garza Azul </div><div class="ave-cien"><i>Egretta caerulea</i></div><div class="ave-en">Little blue heron</div><div class="ave-fam">Ardeidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Garza del ganado </div><div class="ave-cien"><i>Ardea ibis</i></div><div class="ave-en">Western Cattle-Egret</div><div class="ave-fam">Ardeidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Garza rayada </div><div class="ave-cien"><i>Butorides striata</i></div><div class="ave-en">Striated Heron</div><div class="ave-fam">Ardeidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Gavilán caminero </div><div class="ave-cien"><i>Rupornis magnirostris</i></div><div class="ave-en">Roadside Hawk</div><div class="ave-fam">Accipitridae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Golondrina barranquera </div><div class="ave-cien"><i>Stelgidopteryx ruficollis</i></div><div class="ave-en">Southern Rough-winged Swallow</div><div class="ave-fam">Hirundinidae</div></li>
+      <li class="ave-fila" data-tipo="end"><div class="ave-es">Hormiguero de parker <span class="etq etq-end">Endémica</span></div><div class="ave-cien"><i>Cercomacroides parkeri</i></div><div class="ave-en">Parker&#x27;s Antbird</div><div class="ave-fam">Thamnophilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Hormiguero Yegua </div><div class="ave-cien"><i>Cercomacra nigricans</i></div><div class="ave-en">Jet Antbird</div><div class="ave-fam">Thamnophilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Lora cabeza azul </div><div class="ave-cien"><i>Pionus menstruus</i></div><div class="ave-en">Blue-headed Parrot</div><div class="ave-fam">Psittacidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Mango pechinegro </div><div class="ave-cien"><i>Anthracothorax nigricollis</i></div><div class="ave-en">Black-throated Mango</div><div class="ave-fam">Trochilidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Martín pescador </div><div class="ave-cien"><i>Chloroceryle americana</i></div><div class="ave-en">Green Kingfisher</div><div class="ave-fam">Cerylidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Mielero común </div><div class="ave-cien"><i>Coereba flaveola</i></div><div class="ave-en">Bananaquit</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Mielero Verde </div><div class="ave-cien"><i>Chlorophanes spiza</i></div><div class="ave-en">Green honeycreeper</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Mirla pantanera </div><div class="ave-cien"><i>Turdus ignobilis</i></div><div class="ave-en">Black-billed Thrush</div><div class="ave-fam">Turdidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Orejero Coronigrís </div><div class="ave-cien"><i>Leptopogon superciliaris</i></div><div class="ave-en">Slaty capped Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Paloma morada </div><div class="ave-cien"><i>Patagioenas cayennensis</i></div><div class="ave-en">Pale-vented Pigeon</div><div class="ave-fam">Columbidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Pellar o Alcaraván </div><div class="ave-cien"><i>Vanellus chilensis</i></div><div class="ave-en">Southern Lapwing</div><div class="ave-fam">Charadriidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Periquito de anteojos </div><div class="ave-cien"><i>Forpus conspicillatus</i></div><div class="ave-en">Spectacled Parrotlet</div><div class="ave-fam">Psittacidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Pibí boreal <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Contopus cooperi</i></div><div class="ave-en">Olive-sided Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Picogordo Degollado </div><div class="ave-cien"><i>Pheucticus ludovicianus</i></div><div class="ave-en">Rose-breasted grosbeak</div><div class="ave-fam">Cardinalidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Picoplano azufrado </div><div class="ave-cien"><i>Tolmomyias sulphurescens</i></div><div class="ave-en">Yellow-olive Flatbill</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Pigua o Garrapatero </div><div class="ave-cien"><i>Daptrius chimachima</i></div><div class="ave-en">Yellow-headed Caracara</div><div class="ave-fam">Falconidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Piranga Roja <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Piranga rubra</i></div><div class="ave-en">Summer tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Pisingo </div><div class="ave-cien"><i>Dendrocygna autumnalis</i></div><div class="ave-en">Black-bellied Whistling-Duck</div><div class="ave-fam">Anatidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Reinita acuatica <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Parkesia noveboracensis</i></div><div class="ave-en">Northern Waterthrush</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Reinita Castaña <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Setophaga castanea</i></div><div class="ave-en">Bay-breasted Warbler</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Reinita dorada <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Setophaga petechia</i></div><div class="ave-en">Yellow Warbler</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Reinita enlutada <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Geothlypis philadelphia</i></div><div class="ave-en">Mourning Warbler</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Reinita gorginaranja <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Setophaga fusca</i></div><div class="ave-en">Blackburnian Warbler</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Reinita tropical </div><div class="ave-cien"><i>Setophaga pitiayumi</i></div><div class="ave-en">Tropical Parula</div><div class="ave-fam">Parulidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Saltátor Pio-judio </div><div class="ave-cien"><i>Saltator striatipectus</i></div><div class="ave-en">Streaked Saltator</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Semillero Intermedio </div><div class="ave-cien"><i>Sporophila intermedia</i></div><div class="ave-en">Grey seedeater</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Semillero pardo </div><div class="ave-cien"><i>Asemospiza obscura</i></div><div class="ave-en">Dull-colored Grassquit</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Sirirí común </div><div class="ave-cien"><i>Tyrannus melancholicus</i></div><div class="ave-en">Tropical Kingbird</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Sirirí Rayado </div><div class="ave-cien"><i>Myiodynastes maculatus</i></div><div class="ave-en">Streaked Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Suelda crestinegra </div><div class="ave-cien"><i>Myiozetetes cayanensis</i></div><div class="ave-en">Rusty-margined Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tangara cabecirufa </div><div class="ave-cien"><i>Tangara gyrola</i></div><div class="ave-en">Bay-headed Tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tangara Dorsirroja </div><div class="ave-cien"><i>Ramphocelus dimidiatus</i></div><div class="ave-en">Crimson-backed tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tangara Guirá </div><div class="ave-cien"><i>Hemithraupis guira</i></div><div class="ave-en">Guira tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tangara Palmera </div><div class="ave-cien"><i>Thraupis palmarum</i></div><div class="ave-en">Palm tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo="casi"><div class="ave-es">Tangara rastrojera <span class="etq etq-casi">Casi endémica</span></div><div class="ave-cien"><i>Stilpnia vitriolina</i></div><div class="ave-en">Scrub Tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tangara real </div><div class="ave-cien"><i>Stilpnia cyanicollis</i></div><div class="ave-en">Blue-necked Tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tinamú chico </div><div class="ave-cien"><i>Crypturellus soui</i></div><div class="ave-en">Little Tinamou</div><div class="ave-fam">Tinamidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tirano Tijereta gris </div><div class="ave-cien"><i>Tyrannus savana</i></div><div class="ave-en">Fork tailed Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tiranuelo cabecigris </div><div class="ave-cien"><i>Phyllomyias griseiceps</i></div><div class="ave-en">Sooty-headed Tyrannulet</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tiranuelo cejiamarillo </div><div class="ave-cien"><i>Zimmerius chrysops</i></div><div class="ave-en">Golden-faced Tyrannulet</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tiranuelo coronado </div><div class="ave-cien"><i>Tyrannulus elatus</i></div><div class="ave-en">Yellow-crowned Tyrannulet</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tiranuelo salta arroyo </div><div class="ave-cien"><i>Serpophaga cinerea</i></div><div class="ave-en">Torrent tyrannulet</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tiranuelo silbador </div><div class="ave-cien"><i>Camptostoma obsoletum</i></div><div class="ave-en">Southern Beardless-Tyrannulet</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Titiribí o pechirrojo </div><div class="ave-cien"><i>Pyrocephalus rubinus</i></div><div class="ave-en">Vermilion Flycatcher</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Toche enjalmado </div><div class="ave-cien"><i>Ramphocelus flammigerus</i></div><div class="ave-en">Flame rumped Tanager</div><div class="ave-fam">Thraupidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tortolita colipinta </div><div class="ave-cien"><i>Leptotila verreauxi</i></div><div class="ave-en">White-tipped Dove</div><div class="ave-fam">Columbidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tortolita común </div><div class="ave-cien"><i>Zenaida auriculata</i></div><div class="ave-en">Eared Dove</div><div class="ave-fam">Columbidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tortolita rojiza </div><div class="ave-cien"><i>Columbina talpacoti</i></div><div class="ave-en">Ruddy Ground Dove</div><div class="ave-fam">Columbidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Trepatroncos Cacao </div><div class="ave-cien"><i>Xiphorhynchus susurrans</i></div><div class="ave-en">Cocoa Woodcreeper</div><div class="ave-fam">Furnariidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Trepatroncos Corona Rayada </div><div class="ave-cien"><i>Lepidocolaptes souleyetii</i></div><div class="ave-en">Streak-headed woodcreeper</div><div class="ave-fam">Furnariidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Tres pies </div><div class="ave-cien"><i>Tapera naevia</i></div><div class="ave-en">Striped Cuckoo</div><div class="ave-fam">Cuculidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Turpial amarillo </div><div class="ave-cien"><i>Icterus nigrogularis</i></div><div class="ave-en">Yellow Oriole</div><div class="ave-fam">Icteridae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Vencejo Collar Blanco </div><div class="ave-cien"><i>Streptoprocne zonaris</i></div><div class="ave-en">White collared swift</div><div class="ave-fam">Apodidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Verderón Castaño </div><div class="ave-cien"><i>Pachysylvia semibrunnea</i></div><div class="ave-en">Rufous-naped Greenlet</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Verderón Ojirrojo </div><div class="ave-cien"><i>Vireo olivaceus</i></div><div class="ave-en">Red-eyed Vireo</div><div class="ave-fam">Vireonidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Vireo chivi </div><div class="ave-cien"><i>Vireo chivi</i></div><div class="ave-en">Chivi Vireo</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo=""><div class="ave-es">Viudita blanquinegra </div><div class="ave-cien"><i>Fluvicola pica</i></div><div class="ave-en">Pied Water-Tyrant</div><div class="ave-fam">Tyrannidae</div></li>
+      <li class="ave-fila" data-tipo="mig"><div class="ave-es">Zorzal Buchipecoso <span class="etq etq-mig">Migratoria</span></div><div class="ave-cien"><i>Catharus ustulatus</i></div><div class="ave-en">Swainson&#x27;s Thrush</div><div class="ave-fam">Turdidae</div></li>
+    </ul>
+    <p class="sin-resultados" id="sin-resultados" hidden>No encontramos esa ave en el listado… ¿será la próxima que descubras aquí?</p>
+  </div>
+
+  <div class="cta-aves">
+    <p>¿Quieres verlas en persona?</p>
+    <a class="btn-reservar" href="reservar-aves.html">Reservar avistamiento</a>
+  </div>
+  <p class="credito-aves">Listado de la caracterización de aves de la Reserva Natural La María.</p>
+</main>
+
+<script>
+(function () {
+  var q = document.getElementById('buscar'), filtro = '', filas = [].slice.call(document.querySelectorAll('#lista-aves .ave-fila'));
+  var norm = function (s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
+  filas.forEach(function (f) { f._t = norm(f.textContent); });
+  function aplicar() {
+    var t = norm(q.value.trim()), n = 0;
+    filas.forEach(function (f) {
+      var tipo = f.getAttribute('data-tipo');
+      var okF = !filtro || (filtro === 'end' ? (tipo === 'end' || tipo === 'casi') : tipo === filtro);
+      var ok = okF && (!t || f._t.indexOf(t) >= 0);
+      f.hidden = !ok; if (ok) n++;
+    });
+    document.getElementById('conteo').textContent = n + (n === 1 ? ' especie' : ' especies');
+    document.getElementById('sin-resultados').hidden = n > 0;
+  }
+  q.addEventListener('input', aplicar);
+  document.querySelectorAll('.chip').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('activo'); });
+      b.classList.add('activo'); filtro = b.getAttribute('data-filtro'); aplicar();
+    });
+  });
+})();
+</script>
+</body>
+</html>

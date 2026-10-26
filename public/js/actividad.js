@@ -3,13 +3,18 @@
   'use strict';
   var A = window.Actividades, C = A.CONFIG;
   var WHATSAPP = '573113977479';
+  var WHATSAPP_JHON = '573217568530';   // WhatsApp de Jhon (cabalgatas). Vacío = número principal
+  // false = aún sin pasarela de pagos: la reserva se envía por WhatsApp. true = pago en línea (Bold).
+  var PAGOS_EN_LINEA = false;
   var $ = function (id) { return document.getElementById(id); };
   var clave = document.body.getAttribute('data-actividad');
   var act = C.actividades[clave];
+  var NUMERO = (clave === 'cabalgata' && WHATSAPP_JHON) ? WHATSAPP_JHON : WHATSAPP;
   var estado = { cot: null, enviando: false };
 
   document.querySelectorAll('.js-wa').forEach(function (a) {
-    a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola, tengo una pregunta sobre la reserva de ' + act.nombre.toLowerCase() + ' en La María');
+    var numero = (clave === 'cabalgata' && WHATSAPP_JHON) ? WHATSAPP_JHON : WHATSAPP;
+    a.href = 'https://wa.me/' + numero + '?text=' + encodeURIComponent('Hola, tengo una pregunta sobre la reserva de ' + act.nombre.toLowerCase() + ' en La María');
     a.target = '_blank'; a.rel = 'noopener';
   });
 
@@ -77,7 +82,8 @@
     }
     var listo = cot.ok && $('fecha').value;
     $('btn-pagar').disabled = !listo || estado.enviando;
-    $('btn-pagar').textContent = estado.enviando ? 'Conectando con Bold…' : !$('fecha').value ? 'Elige el día' : cot.ok ? 'Pagar ' + A.pesos(cot.pagar) + ' con Bold' : 'Revisa los datos';
+    $('btn-pagar').textContent = estado.enviando ? 'Conectando con Bold…' : !$('fecha').value ? 'Elige el día' : cot.ok ? (PAGOS_EN_LINEA ? 'Pagar ' + A.pesos(cot.pagar) + ' con Bold' : 'Enviar solicitud por WhatsApp') : 'Revisa los datos';
+    if (!PAGOS_EN_LINEA && cot.ok) $('res-pagar-etq').textContent = cot.pagoCompleto ? 'Pago para confirmar (100%)' : 'Anticipo para confirmar (50%)';
   }
 
   ['adultos', 'ninos'].forEach(function (id) { $(id).addEventListener('change', function () { actualizarPersonas(); actualizar(); }); });
@@ -86,6 +92,12 @@
   document.querySelectorAll('input[name="modalidad"]').forEach(function (r) { r.addEventListener('change', function () { ajustarFechaMinima(); actualizar(); }); });
   $('como-supo').addEventListener('change', function () { $('campo-como-supo-otro').hidden = this.value !== 'Otro'; });
   $('almuerzo-precio').textContent = A.pesos(C.almuerzo.precio);
+  if (!PAGOS_EN_LINEA) {
+    document.querySelectorAll('.politicas h3').forEach(function (h) { if (h.textContent === 'Antes de pagar') h.textContent = 'Antes de reservar'; });
+    document.querySelectorAll('.subpaso').forEach(function (h) { if (h.textContent === '¿Cuánto quieres pagar hoy?') h.textContent = '¿Cuánto quieres pagar para confirmar?'; });
+    var seg = document.querySelector('.seguro');
+    if (seg) seg.textContent = 'Al enviar se abre WhatsApp con tu solicitud. Te confirmamos la disponibilidad y te enviamos los datos para el pago (transferencia, Nequi o enlace de pago).';
+  }
   ajustarFechaMinima();
   actualizar();
 
@@ -112,6 +124,18 @@
     if (d.comoSupo === 'Otro' && d.comoSupoOtro.length < 2) return mostrarError('Escribe dónde supiste de nosotros.');
     if (!d.aceptaNormas || !d.aceptaDatos) return mostrarError('Para continuar, acepta las condiciones y el tratamiento de datos.');
 
+    if (!PAGOS_EN_LINEA) {
+      var q = estado.cot;
+      var msg = 'Hola, quiero reservar: ' + q.nombre + ' en La María.\n' +
+        'Día: ' + fechaLarga(d.fecha) + ' · ' + d.hora + '\n' +
+        q.lineas.map(function (l) { return '- ' + l.texto + ': ' + A.pesos(l.valor); }).join('\n') + '\n' +
+        'Total según la página: ' + A.pesos(q.total) + ' (quiero pagar ' + (q.pagoCompleto ? 'el 100%' : 'el 50%') + ': ' + A.pesos(q.pagar) + ')\n\n' +
+        'Nombre: ' + c.nombre + '\nDocumento: ' + c.tipoDocumento + ' ' + c.documento + '\nCorreo: ' + c.email + '\nCelular: ' + c.celular + '\n' +
+        '¿Cómo supe de ustedes?: ' + d.comoSupo + (d.comoSupoOtro ? ' (' + d.comoSupoOtro + ')' : '') +
+        (d.comentarios.trim() ? '\nComentarios: ' + d.comentarios.trim() : '');
+      location.href = 'https://wa.me/' + NUMERO + '?text=' + encodeURIComponent(msg);
+      return;
+    }
     estado.enviando = true; actualizar();
     fetch('/api/actividades', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
       .then(function (r) { return r.json(); })

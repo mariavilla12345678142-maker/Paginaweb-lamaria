@@ -3,6 +3,8 @@
   'use strict';
   var T = window.Tarifas;
   var WHATSAPP = '573113977479';
+  // false = aún sin pasarela de pagos: la reserva se envía por WhatsApp. true = pago en línea (Bold).
+  var PAGOS_EN_LINEA = false;
   var MESES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   var DIAS = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
   var MES_CORTO = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
@@ -30,6 +32,12 @@
 
   // ---------- Disponibilidad ----------
   function cargar() {
+    if (!PAGOS_EN_LINEA) {
+      var av = $('aviso-demo');
+      av.innerHTML = '<strong>Reserva por WhatsApp.</strong> Elige tus fechas y envíanos la solicitud: te confirmamos la disponibilidad y te enviamos los datos para pagar el anticipo.';
+      iniciar(hoyColombia(), [], false); av.hidden = false;
+      return;
+    }
     fetch('/api/disponibilidad', { headers: { Accept: 'application/json' } })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (j) { if (!j || !j.ok) throw new Error('respuesta'); iniciar(j.hoy, j.ocupadas, false); })
@@ -150,7 +158,7 @@
     }
     var b = $('btn-pagar');
     b.disabled = !c || estado.enviando;
-    b.textContent = estado.enviando ? 'Preparando el pago…' : c ? 'Pagar anticipo de ' + T.pesos(c.anticipo) : (estado.llegada ? 'Elige la salida' : 'Elige tus fechas');
+    b.textContent = estado.enviando ? 'Preparando el pago…' : c ? (PAGOS_EN_LINEA ? 'Pagar anticipo de ' + T.pesos(c.anticipo) : 'Enviar solicitud por WhatsApp') : (estado.llegada ? 'Elige la salida' : 'Elige tus fechas');
   }
 
   // ---------- Enviar ----------
@@ -178,6 +186,19 @@
     if (datos.comoSupo === 'Otro' && datos.comoSupoOtro.length < 2) return mostrarError('Escribe dónde supiste de nosotros.');
     if (!datos.aceptaNormas || !datos.aceptaDatos) return mostrarError('Para continuar, acepta las normas de la casa y el tratamiento de datos.');
 
+    if (!PAGOS_EN_LINEA) {
+      var q = estado.cotizacion;
+      var msg = 'Hola, quiero reservar el alojamiento en La María.\n' +
+        'Llegada: ' + fechaBonita(estado.llegada, true) + '\nSalida: ' + fechaBonita(estado.salida, true) +
+        ' (' + q.cantidadNoches + (q.cantidadNoches === 1 ? ' noche' : ' noches') + ')\n' +
+        'Personas: ' + datos.huespedes + (datos.mascotas ? ' · con mascota' : '') + '\n' +
+        'Total según la página: ' + T.pesos(q.total) + ' (anticipo 50%: ' + T.pesos(q.anticipo) + ')\n\n' +
+        'Nombre: ' + c.nombre + '\nDocumento: ' + datos.cliente.tipoDocumento + ' ' + c.documento + '\nCorreo: ' + c.email + '\nCelular: ' + c.celular + '\n' +
+        '¿Cómo supe de ustedes?: ' + datos.comoSupo + (datos.comoSupoOtro ? ' (' + datos.comoSupoOtro + ')' : '') +
+        (datos.comentarios.trim() ? '\nComentarios: ' + datos.comentarios.trim() : '');
+      window.location.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+      return;
+    }
     if (estado.demo) {
       return mostrarError('Esta es una vista de demostración: cuando la página esté publicada, este botón te lleva a Bold para pagar ' + T.pesos(estado.cotizacion.anticipo) + '.');
     }
@@ -196,5 +217,12 @@
       .catch(function () { estado.enviando = false; actualizar(); mostrarError('No hay conexión. Intenta de nuevo o escríbenos por WhatsApp.'); });
   });
 
+  if (!PAGOS_EN_LINEA) modoWhatsApp();
+  function modoWhatsApp() {
+    document.querySelectorAll('.politicas h3').forEach(function (h) { if (h.textContent === 'Antes de pagar') h.textContent = 'Antes de reservar'; });
+    var seg = document.querySelector('.seguro');
+    if (seg) seg.textContent = 'Al enviar se abre WhatsApp con tu solicitud. Te confirmamos la disponibilidad y te enviamos los datos para pagar el anticipo del 50% (transferencia, Nequi o enlace de pago).';
+    var et = document.querySelector('.linea.anticipo span'); if (et) et.textContent = 'Anticipo para confirmar (50%)';
+  }
   cargar();
 })();

@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="estilos.css?v=14">
 
 <!-- Datos para Google (aparecer mejor en las búsquedas) -->
 <script type="application/ld+json">
@@ -93,13 +93,17 @@
       <a class="marca" href="#experiencias"><img src="img/logos/cabalgata-negro.png" alt="La María Cabalgata · Reserva Natural"></a>
       <a class="marca" href="#experiencias"><img src="img/logos/explora-negro.png" alt="La María Explora · Reserva Natural"></a>
     </div>
-    <p class="lead">Una casa entera en medio de la naturaleza del Quindío para compartir en familia o con amigos. Cabalgatas, caminatas, aves y un jacuzzi bajo las estrellas, a pocos minutos del Caimo.</p>
+    <p class="lead">Una casa entera en medio de la naturaleza del Quindío para compartir en familia o con amigos. Cabalgatas, caminatas, aves, una piscina infinita y un jacuzzi bajo las estrellas, a pocos minutos del Caimo.</p>
     <div class="acciones">
       <a class="btn-reservar" href="#reservar">Reservar</a>
       <a class="btn-borde js-wa" href="#">Preguntar por WhatsApp</a>
     </div>
   </div>
-  <div class="portada-foto"><img src="img/portada-hamaca.jpg" alt="Hamaca en el corredor de La María con vista al valle y las montañas" fetchpriority="high"></div>
+  <div class="portada-foto carrusel" aria-label="Fotos de La María">
+    <img class="activa" src="img/portada-hamaca.jpg" alt="Hamaca en el corredor de La María con vista al valle y las montañas" fetchpriority="high">
+    <img src="img/portada-piscina.jpg" alt="Piscina infinita de La María rodeada de jardín y bosque" loading="lazy">
+    <img src="img/portada-cabalgata.jpg" alt="Grupo de cabalgata a caballo a la orilla del río en la reserva" loading="lazy" style="object-position:50% 70%">
+  </div>
 </section>
 
 <!-- ============ DATOS RÁPIDOS ============ -->
@@ -108,8 +112,9 @@
     <div class="dato"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 14.2c2.8.2 5 2.2 5 5.3"/></svg><div><strong>11</strong><span>huéspedes</span></div></div>
     <div class="dato"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18V7"/><path d="M3 13h18v5"/><path d="M21 13a3 3 0 0 0-3-3h-7v3"/><circle cx="7" cy="10.5" r="1.8"/></svg><div><strong>4</strong><span>habitaciones · 8 camas</span></div></div>
     <div class="dato"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3z"/><path d="M6 12V5.5A1.5 1.5 0 0 1 9 5.5"/><path d="M7 19l-1 2M17 19l1 2"/></svg><div><strong>6</strong><span>baños</span></div></div>
-    <div class="dato"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16c2 0 2-1.5 4-1.5S8 16 10 16s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5S8 20 10 20s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M8 13V5a2 2 0 0 1 4 0M14 13V5a2 2 0 0 1 4 0M8 8h6"/></svg><div><strong>Piscina</strong><span>y jacuzzi</span></div></div>
+    <div class="dato"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16c2 0 2-1.5 4-1.5S8 16 10 16s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5S8 20 10 20s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M8 13V5a2 2 0 0 1 4 0M14 13V5a2 2 0 0 1 4 0M8 8h6"/></svg><div><strong>Piscina</strong><span>infinita y jacuzzi</span></div></div>
     <div class="dato"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 12c-3 0-5.5 3.5-5.5 6 0 1.6 1.4 2.5 3 2 1-.3 1.7-.5 2.5-.5s1.5.2 2.5.5c1.6.5 3-.4 3-2 0-2.5-2.5-6-5.5-6z"/></svg><div><strong>Mascotas</strong><span>bienvenidas</span></div></div>
+    <div class="dato"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 21C5 15 5 9.5 8 6.2L10.6 3.4 11.6 2l1.2 2.6c2.8 2 5.3 4.8 7.1 7.8.7 1.1-.1 2.5-1.4 2.4l-2.9-.9c-1.6-.5-2.7.4-2.7 2V21"/><path d="M8 6.2c.9 1.6 1.4 3.4 1.3 5.3"/><circle cx="14.6" cy="7.6" r=".3"/></svg><div><strong>Cabalgatas</strong><span>con guía</span></div></div>
   </div>
 </section>
 
@@ -119,8 +124,9 @@
     <div>
       <p class="eyebrow">Bienvenidos a La María</p>
       <h2 class="h2">Un alojamiento dentro de una reserva natural.</h2>
-      <p class="texto" style="margin-top:22px">En La María estás rodeado de naturaleza. Durante el día y la noche escucharás aves, ranas, insectos y otros animales: son parte de la vida en el campo y de la experiencia de alojarte en una reserva natural.</p>
-      <p class="texto">Aquí preferimos el control biológico y evitamos usar venenos. Es un lugar para bajar el ritmo, desconectarse de las pantallas y volver a mirar el paisaje.</p>
+      <p class="texto" style="margin-top:22px">Somos <a class="glosa" href="#" data-glosa="rnsc">Reserva Natural de la Sociedad Civil</a> desde 2005, afiliada a <a href="https://www.resnatur.org.co" target="_blank" rel="noopener">Resnatur</a>, la Red Colombiana de Reservas Naturales de la Sociedad Civil. De nuestras 42 hectáreas, 15 están dedicadas a la conservación y 25 son potreros en <a class="glosa" href="#" data-glosa="silvopastoreo">silvopastoreo</a>, donde el ganado y los caballos conviven con los árboles: así producimos cuidando la tierra.</p>
+      <p class="texto">En La María estás rodeado de naturaleza. Durante el día y la noche escucharás aves, ranas, insectos y otros animales: son parte de la vida en el campo y de la experiencia de alojarte con nosotros.</p>
+      <p class="texto">Aquí preferimos el <a class="glosa" href="#" data-glosa="control-biologico">control biológico</a> y evitamos usar venenos. Es un lugar para bajar el ritmo, desconectarse de las pantallas y volver a mirar el paisaje.</p>
     </div>
     <div class="foto" style="aspect-ratio:4/3"><img src="img/vista-montana.jpg" alt="Vista a la montaña desde La María" loading="lazy"></div>
   </div>
@@ -134,12 +140,63 @@
     <ol class="linea-tiempo">
       <li class="hito"><span class="hito-ano">1997</span><div><h3>Todo empezó con un “no me gustó”</h3><p>Dos amigos andaban buscando finca y llegaron a conocer La María. Gabriel la miró de arriba abajo y le dijo a Jacobo: “¡Nooo, Jacobo! Este rastrojero no me gustó; si quiere, cómprela usted”. Y Jacobo, que vio algo que Gabriel no vio, la compró. Sembró pasto, trajo sus vacas y levantó una casita. Ahí empezó todo.</p></div></li>
       <li class="hito"><span class="hito-ano">2002</span><div><h3>Un regalo para empezar una familia</h3><p>Jacobo y Miriam, los papás de Jaime, le regalaron La María. Ese mismo año Jaime y yo, Pilar, nos casamos, y la finca se convirtió en nuestro hogar y en nuestro sueño.</p></div></li>
-      <li class="hito"><span class="hito-ano">2005</span><div><h3>Le dijimos sí a la naturaleza</h3><p>Quisimos poner nuestro granito de arena por el planeta y convertimos La María en Reserva Natural de la Sociedad Civil. Nos prometimos algo: que la finca fuera rentable, pero siempre respetando la naturaleza. Desde entonces hemos sembrado más de 10.000 árboles de 38 especies en solo 40 hectáreas. Y la naturaleza nos respondió: muchos animales silvestres que habían perdido su hogar han vuelto a casa.</p></div></li>
-      <li class="hito"><span class="hito-ano">2010</span><div><h3>La casa grande</h3><p>Jaime construyó la casa grande pensando en Manuela, nuestra hija, que con apenas 2 años ya se enamoraba de los caballos y del campo. Hoy ella también nos acompaña en las actividades de la empresa.</p></div></li>
-      <li class="hito"><span class="hito-ano">2017</span><div><h3>Empezamos con 3 caballos… y vamos en más de 50</h3><p>Alquilamos la casa a los dueños de un hotel vecino y empezamos a llevar a sus huéspedes de cabalgata. De la mano de Jhon, Yamilet y su familia, las cabalgatas crecieron con cada visitante: empezamos con 3 caballos y hoy vamos en más de 50.</p></div></li>
+      <li class="hito"><span class="hito-ano">2005</span><div><h3>Le dijimos sí a la naturaleza</h3><p>Quisimos poner nuestro granito de arena por el planeta y convertimos La María en <a class="glosa" href="#" data-glosa="rnsc">Reserva Natural de la Sociedad Civil</a>. Nos prometimos algo: que la finca fuera rentable, pero siempre respetando la naturaleza. Desde entonces hemos sembrado más de 10.000 árboles de 38 especies en solo 42 hectáreas. Y la naturaleza nos respondió: muchos animales silvestres que habían perdido su hogar han vuelto a casa.</p></div></li>
+      <li class="hito"><span class="hito-ano">2010</span><div><h3>La casa grande</h3><p>Jaime construyó la casa grande pensando en compartir este tesoro y en Manuela, nuestra hija, que con apenas 2 años ya se enamoraba de los caballos y del campo. Hoy ella también nos acompaña en las actividades de la empresa.</p></div></li>
+      <li class="hito"><span class="hito-ano">2017</span><div><h3>Empezamos con 3 caballos… y vamos en más de 50</h3><p>Alquilamos la casa a los dueños de un hotel vecino y empezamos a ofrecer a sus huéspedes las cabalgatas. De la mano de Jhon, Yamilet y su familia, las cabalgatas crecieron con cada visitante: empezamos con 3 caballos y hoy vamos en más de 50.</p></div></li>
       <li class="hito"><span class="hito-ano">2022</span><div><h3>Abrimos nuestra casa para ti</h3><p>Terminó el alquiler y decidimos consentir la casa: le hicimos mejoras, entre ellas la piscina y el jacuzzi, para recibir a viajeros como tú.</p></div></li>
+      <li class="hito"><span class="hito-ano">2025</span><div><h3>Celebramos 20 años como reserva</h3><p>En junio de 2025 cumplimos 20 años como Reserva Natural de la Sociedad Civil y lo celebramos en casa, con la familia y los amigos que han hecho parte de esta historia.</p>
+        <div class="hito-fotos">
+          <img src="img/historia/20-anos-pilar-jaime.jpg" alt="Pilar y Jaime en la celebración de los 20 años de la reserva, junto a la torta" loading="lazy">
+          <img src="img/historia/20-anos-torta.jpg" alt="Torta con velas del número 20" loading="lazy">
+          <img src="img/historia/20-anos-grupo.jpg" alt="Familia y amigos reunidos en la casa celebrando los 20 años de la reserva" loading="lazy">
+        </div></div></li>
       <li class="hito"><span class="hito-ano">Hoy</span><div><h3>Esta historia sigue</h3><p>Nuestra historia aún se está escribiendo, y nos encantaría que fueras parte de ella. Síguenos, ven a visitarnos y sé testigo de lo que viene.</p></div></li>
     </ol>
+    <!-- Antes y ahora -->
+    <div class="antes-ahora">
+      <h3 class="antes-ahora-titulo">Antes y ahora</h3>
+      <p class="texto">Así se veía La María en 2008, y así la encuentras hoy, desde el mismo lugar. Desliza la barra para comparar.</p>
+
+      <div class="pareja">
+        <h4>La terraza</h4>
+        <div class="comparar" style="--pos:50%">
+          <img src="img/historia/terraza-hoy.jpg" alt="La misma terraza hoy, con comedor, plantas y techo de esterilla" loading="lazy">
+          <div class="comparar-antes"><img src="img/historia/terraza-2008.jpg" alt="La terraza de la casa en 2008, con piso de baldosa y sin muebles" loading="lazy"></div>
+          <span class="comparar-etq etq-antes">2008</span><span class="comparar-etq etq-hoy">Hoy</span>
+          <span class="comparar-linea" aria-hidden="true"></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Desliza para comparar la terraza en 2008 y hoy">
+        </div>
+      </div>
+
+      <div class="pareja">
+        <h4>La vista desde la casa</h4>
+        <div class="comparar" style="--pos:50%">
+          <img src="img/historia/vista-hoy.jpg" alt="La misma vista hoy, con el valle cubierto de guaduales y bosque" loading="lazy">
+          <div class="comparar-antes"><img src="img/historia/vista-2008.jpg" alt="Vista al río y a las montañas entre los postes de la casa en obra, en 2008" loading="lazy"></div>
+          <span class="comparar-etq etq-antes">2008</span><span class="comparar-etq etq-hoy">Hoy</span>
+          <span class="comparar-linea" aria-hidden="true"></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Desliza para comparar la vista desde la casa en 2008 y hoy">
+        </div>
+      </div>
+
+      <div class="pareja">
+        <h4>La piscina</h4>
+        <div class="comparar" style="--pos:50%">
+          <img src="img/historia/piscina-hoy.jpg" alt="La piscina infinita de hoy, con la misma vista al río" loading="lazy">
+          <div class="comparar-antes"><img src="img/historia/piscina-2008.jpg" alt="Pilar limpiando la primera piscina, una piscina armable, en 2008" loading="lazy"></div>
+          <span class="comparar-etq etq-antes">2008</span><span class="comparar-etq etq-hoy">Hoy</span>
+          <span class="comparar-linea" aria-hidden="true"></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Desliza para comparar la piscina en 2008 y hoy">
+        </div>
+      </div>
+
+      <h4 class="recuerdos-titulo">Más recuerdos de 2008</h4>
+      <div class="recuerdos">
+        <figure><img src="img/historia/antes-potrero.jpg" alt="Potreros con los primeros árboles sembrados, en 2008" loading="lazy"><figcaption>Los primeros árboles que sembramos</figcaption></figure>
+        <figure><img src="img/historia/antes-rio.jpg" alt="El río crecido junto a los potreros, en 2008" loading="lazy"><figcaption>El río, en una creciente</figcaption></figure>
+        <figure><img src="img/historia/antes-piscina-2.jpg" alt="Nuestra primera piscina, en 2008" loading="lazy"><figcaption>Nuestra primera piscina</figcaption></figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -157,14 +214,17 @@
       <article class="tarjeta">
         <div class="foto"><img src="img/cabalgata.jpg" alt="Cabalgata en La María" loading="lazy"></div>
         <h3>Cabalgatas con guía</h3>
-        <p>Recorridos a caballo acompañados por un guía, con caballos acostumbrados a jinetes de todos los niveles, incluso a quienes montan por primera vez. Hasta se cruza el río.</p>
+        <p>Recorridos a caballo acompañados por un guía, con caballos acostumbrados a jinetes de todos los niveles, incluso a quienes montan por primera vez. Verás muchos paisajes y animales, y hasta podrías cruzar el río si el clima lo permite.</p>
         <a class="link-fuerte" href="https://maps.google.com/?cid=10584108364430197333" target="_blank" rel="noopener">4,9 ★ en Google · 94 reseñas →</a>
-        <a class="link-reservar" href="reservar-cabalgata.html">Reservar cabalgata →</a>
+        <a class="link-reservar" href="reservar-cabalgata.html">Reservar cabalgata en línea →</a>
+        <a class="link-reservar js-wa" href="#" data-numero="jhon" data-mensaje="Hola Jhon, quiero reservar una cabalgata en La María">Reservar por WhatsApp con Jhon →</a>
       </article>
       <article class="tarjeta">
         <div class="foto"><img src="img/aves.jpg" alt="Titiribí o pechirrojo en la reserva" loading="lazy"></div>
         <h3>Avistamiento de aves</h3>
-        <p>115 especies registradas, entre ellas 2 que solo viven en Colombia y 10 que llegan migrando desde Norteamérica. Las primeras horas de la mañana son el mejor momento para verlas.</p>
+        <p>109 especies registradas, entre ellas 2 que solo viven en Colombia y 10 que llegan migrando desde Norteamérica. Las primeras horas de la mañana son el mejor momento para verlas.</p>
+        <p class="precio-act">Sin guía: $60.000 por persona · Con guía experto: $120.000 por persona</p>
+        <a class="link-fuerte" href="aves.html">Ver el listado de aves →</a>
         <a class="link-reservar" href="reservar-aves.html">Reservar avistamiento →</a>
       </article>
       <article class="tarjeta">
@@ -173,7 +233,7 @@
         <p>Una piscina que parece caer sobre la montaña y un jacuzzi para cerrar la noche bajo las estrellas, disponible hasta las 11:00 p. m.</p>
       </article>
       <article class="tarjeta">
-        <div class="foto"><img src="img/caminata.jpg" alt="Sendero de la reserva" loading="lazy"></div>
+        <div class="foto"><img src="img/paisaje-valle.jpg" alt="Paisaje del valle desde la reserva" loading="lazy"></div>
         <h3>Caminatas</h3>
         <p>Recorridos de unas 2 horas por la reserva, entre bosque, río y vistas al paisaje del Quindío. Armamos la ruta a la medida de tu grupo y el horario lo acordamos contigo.</p>
         <a class="link-reservar" href="reservar-caminata.html">Reservar caminata →</a>
@@ -181,18 +241,19 @@
     </div>
 
     <div class="banda-aves">
-      <div class="cifra-aves"><strong>115</strong><span>especies de aves<br>registradas… y contando</span></div>
+      <div class="cifra-aves"><strong>109</strong><span>especies de aves<br>registradas… y contando</span></div>
       <div>
         <h3>Ven a descubrir las que faltan</h3>
-        <p>Para una reserva tan grande, 115 especies es apenas el comienzo: estamos seguros de que hay muchas más esperando a ser descubiertas. Barranqueros, carpinteros, loras, martines pescadores, turpiales y tangaras de colores ya están en la lista. ¿Cuál será la próxima? Trae tus binoculares, madruga con nosotros y ayúdanos a encontrarla.</p>
+        <p>Para una reserva tan grande, 109 especies es apenas el comienzo: estamos seguros de que hay muchas más esperando a ser descubiertas. Colibríes, carpinteros, loras, martines pescadores, turpiales y tangaras de colores ya están en la lista. ¿Cuál será la próxima? Trae tus binoculares, madruga con nosotros y ayúdanos a encontrarla.</p>
         <a class="btn-reservar" href="reservar-aves.html">Quiero hacer el recorrido</a>
+        <a class="btn-borde btn-listado" href="aves.html">Ver el listado completo</a>
       </div>
     </div>
 
-    <h3 class="subtitulo-aves">Algunas de las 115</h3>
+    <h3 class="subtitulo-aves">Algunas de las 109</h3>
     <div class="galeria-aves">
-        <figure class="ave"><img src="img/aves/titiribi.jpg" alt="Titiribí o pechirrojo" loading="lazy"><figcaption>Titiribí o pechirrojo</figcaption></figure>
-        <figure class="ave"><img style="object-position:65% 50%" src="img/aves/turpial-amarillo.jpg" alt="Turpial amarillo" loading="lazy"><figcaption>Turpial amarillo<small>Foto: @Ronald.birding</small></figcaption></figure>
+        <figure class="ave"><img style="object-position:100% 50%" src="img/aves/titiribi.jpg" alt="Titiribí o pechirrojo" loading="lazy"><figcaption>Titiribí o pechirrojo</figcaption></figure>
+        <figure class="ave"><img style="object-position:13% 50%" src="img/aves/turpial-amarillo.jpg" alt="Turpial amarillo" loading="lazy"><figcaption>Turpial amarillo<small>Foto: @Ronald.birding</small></figcaption></figure>
         <figure class="ave"><img src="img/aves/siriri-rayado.jpg" alt="Sirirí rayado" loading="lazy"><figcaption>Sirirí rayado</figcaption></figure>
         <figure class="ave"><img src="img/aves/pigua.jpg" alt="Pigua o garrapatero" loading="lazy"><figcaption>Pigua o garrapatero</figcaption></figure>
         <figure class="ave"><img src="img/aves/espiguero-capuchino.jpg" alt="Espiguero capuchino" loading="lazy"><figcaption>Espiguero capuchino<small>Foto: wild rochas</small></figcaption></figure>
@@ -201,9 +262,25 @@
 
     <h3 class="subtitulo-aves">Así es un recorrido</h3>
     <div class="galeria-recorrido">
-      <figure><img src="img/aves/recorrido-mirador.jpg" alt="Observadores de aves en el mirador de la casa al amanecer" loading="lazy"><figcaption>Amanecer en el mirador</figcaption></figure>
+      <figure><img src="img/aves/recorrido-mirador.jpg" alt="Observadores de aves al amanecer desde la casa" loading="lazy"><figcaption>Amanecer desde la casa</figcaption></figure>
       <figure><img src="img/aves/recorrido-rio.jpg" alt="Grupo de observadores de aves a la orilla del río" loading="lazy"><figcaption>A la orilla del río</figcaption></figure>
-      <figure><img src="img/aves/recorrido-comederos.jpg" alt="Fotógrafo junto a los comederos de colibríes" loading="lazy"><figcaption>Los comederos de colibríes</figcaption></figure>
+      <figure><img src="img/aves/recorrido-comederos.jpg" alt="Fotógrafo en el hide para observar aves" loading="lazy"><figcaption><a class="glosa" href="#" data-glosa="hide">Hide</a> para aves</figcaption></figure>
+    </div>
+
+    <h3 class="subtitulo-aves">Otras cosas para hacer en tu estadía</h3>
+    <div class="otras-cosas">
+      <div class="foto"><img src="img/pesca.jpg" alt="Niña pescando a la orilla del río en la reserva" loading="lazy"></div>
+      <div>
+        <h4>Pesca en el río</h4>
+        <p>Una tarde tranquila a la orilla del río, ideal para compartir en familia y con los niños.</p>
+      </div>
+    </div>
+    <div class="otras-cosas">
+      <div class="foto"><img src="img/almuerzo/familia.jpg" alt="Familia almorzando patacones en el kiosco de La María" loading="lazy"></div>
+      <div>
+        <h4>Almuerzo campestre</h4>
+        <p>Después de la cabalgata, la caminata o el avistamiento, almuerza en nuestro kiosco de guadua con vista a las montañas: <a class="glosa" href="#" data-glosa="patacon">patacón</a> con todo o <a class="glosa" href="#" data-glosa="fiambre">fiambre</a>. $40.000 por persona; se reserva junto con la actividad.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -216,14 +293,14 @@
         <p class="eyebrow">El alojamiento</p>
         <h2 class="h2">Una casa entera, solo para tu grupo.</h2>
       </div>
-      <p class="texto">Cuatro habitaciones, ocho camas y seis baños para hasta 11 personas. Zonas sociales amplias, comedor para compartir, juegos de mesa y vajilla especial para la piscina. Las luces de las habitaciones se encienden con el mismo control del ventilador.</p>
+      <p class="texto">Cuatro habitaciones, ocho camas y seis baños para hasta 11 personas. Zonas sociales amplias, comedor para compartir, juegos de mesa, wifi, parqueadero y corral para bebé sin costo.</p>
     </div>
     <div class="galeria">
       <div class="foto grande"><img src="img/fachada.jpg" alt="Fachada y zona social de la casa" loading="lazy"></div>
       <div class="foto"><img src="img/habitacion-principal.jpg" alt="Habitación principal" loading="lazy"></div>
       <div class="foto"><img src="img/comedor.jpg" alt="Comedor y zona social" loading="lazy"></div>
       <div class="foto"><img src="img/habitacion-2.jpg" alt="Habitación" loading="lazy"></div>
-      <div class="foto"><img src="img/jacuzzi-noche.jpg" alt="Jacuzzi de noche" loading="lazy"></div>
+      <div class="foto"><img src="img/almuerzo/kiosco.jpg" alt="Mesa servida en el kiosco de guadua con vista a las montañas" loading="lazy"></div>
     </div>
 
     <div class="espacios">
@@ -234,7 +311,7 @@
       </article>
       <article class="espacio">
         <div class="espacio-info"><h3>Habitación 2</h3><p>Con baño privado.</p></div>
-        <div class="espacio-fotos"><figure><img src="img/espacios/hab2-cama.jpg" alt="Habitación" loading="lazy"><figcaption>Habitación</figcaption></figure><figure><img src="img/espacios/hab2-camas.jpg" alt="Habitación" loading="lazy"><figcaption>Habitación</figcaption></figure></div>
+        <div class="espacio-fotos"><figure><img src="img/espacios/hab2-cama.jpg" alt="Habitación" loading="lazy"><figcaption>Habitación</figcaption></figure><figure><img src="img/espacios/hab2-camas.jpg" alt="Habitación" loading="lazy"><figcaption>Habitación</figcaption></figure><figure><img src="img/espacios/hab2-bano.jpg" alt="Baño privado de la habitación 2, con lavamanos de madera y espejo" loading="lazy"><figcaption>Baño privado</figcaption></figure><figure><img src="img/espacios/piscina-bano-2.jpg" alt="Repisa con productos de aseo y toalla en el baño de la habitación 2" loading="lazy"><figcaption>Detalles del baño</figcaption></figure></div>
       </article>
       <article class="espacio">
         <div class="espacio-info"><h3>Habitación 3</h3><p>Con baño privado.</p></div>
@@ -246,7 +323,7 @@
       </article>
       <article class="espacio">
         <div class="espacio-info"><h3>Baño social de la casa</h3><p>Para el uso de todos dentro de la casa.</p></div>
-        <div class="espacio-fotos"><figure><img src="img/espacios/bano-social.jpg" alt="Baño social" loading="lazy"><figcaption>Baño social</figcaption></figure></div>
+        <div class="espacio-fotos"><figure class="foto-completa"><img src="img/espacios/bano-social.jpg" alt="Baño social" loading="lazy"><figcaption>Baño social</figcaption></figure></div>
       </article>
       <h3 class="espacios-titulo">Piscina y jacuzzi</h3>
       <article class="espacio">
@@ -255,12 +332,20 @@
       </article>
       <article class="espacio">
         <div class="espacio-info"><h3>Jacuzzi</h3><p>Disponible hasta las 11:00 p. m.</p></div>
-        <div class="espacio-fotos"><figure><img src="img/espacios/jacuzzi-1.jpg" alt="Jacuzzi" loading="lazy"><figcaption>Jacuzzi</figcaption></figure><figure><img src="img/espacios/jacuzzi-2.jpg" alt="Jacuzzi de noche" loading="lazy"><figcaption>Jacuzzi de noche</figcaption></figure></div>
+        <div class="espacio-fotos"><figure><img src="img/espacios/jacuzzi-1.jpg" alt="Jacuzzi" loading="lazy"><figcaption>Jacuzzi</figcaption></figure></div>
       </article>
       <article class="espacio">
         <div class="espacio-info"><h3>Baño social de la piscina</h3><p>Junto a la zona húmeda, con ducha.</p></div>
-        <div class="espacio-fotos"><figure><img src="img/espacios/piscina-bano-1.jpg" alt="Ducha" loading="lazy"><figcaption>Ducha</figcaption></figure><figure><img src="img/espacios/piscina-bano-2.jpg" alt="Detalles" loading="lazy"><figcaption>Detalles</figcaption></figure><figure><img src="img/espacios/piscina-bano-3.jpg" alt="Detalles" loading="lazy"><figcaption>Detalles</figcaption></figure><figure><img src="img/espacios/piscina-bano-4.jpg" alt="Baño" loading="lazy"><figcaption>Baño</figcaption></figure><figure><img src="img/espacios/piscina-bano-5.jpg" alt="Baño" loading="lazy"><figcaption>Baño</figcaption></figure><figure><img src="img/espacios/piscina-bano-6.jpg" alt="Baño" loading="lazy"><figcaption>Baño</figcaption></figure></div>
+        <div class="espacio-fotos"><figure><img src="img/espacios/piscina-bano-1.jpg" alt="Ducha" loading="lazy"><figcaption>Ducha</figcaption></figure><figure><img src="img/espacios/piscina-bano-3.jpg" alt="Detalles" loading="lazy"><figcaption>Detalles</figcaption></figure><figure><img src="img/espacios/piscina-bano-4.jpg" alt="Baño" loading="lazy"><figcaption>Baño</figcaption></figure><figure><img src="img/espacios/piscina-bano-5.jpg" alt="Baño" loading="lazy"><figcaption>Baño</figcaption></figure><figure><img src="img/espacios/piscina-bano-6.jpg" alt="Baño" loading="lazy"><figcaption>Baño</figcaption></figure></div>
       </article>
+    </div>
+    <div class="videos-casa">
+      <div>
+        <h3>Recorre la piscina</h3>
+        <p class="texto">Piscina infinita, jacuzzi y zona de descanso, con el valle del Quindío de fondo, donde se juntan el río Quindío y el río Verde.</p>
+      </div>
+      <video poster="video/piscina-1.jpg" autoplay muted loop playsinline preload="none" aria-label="Video: recorrido por la zona de la piscina, el jacuzzi y las asoleadoras"><source src="video/piscina-1.mp4" type="video/mp4"><source src="video/piscina-1.webm" type="video/webm"></video>
+      <video poster="video/piscina-2.jpg" autoplay muted loop playsinline preload="none" aria-label="Video: la piscina infinita con vista a las montañas"><source src="video/piscina-2.mp4" type="video/mp4"><source src="video/piscina-2.webm" type="video/webm"></video>
     </div>
   </div>
 </section>
@@ -272,7 +357,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="#6E470B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
       <h3>Celebra con toda confianza</h3>
       <p class="texto">La finca está pensada para compartir en grupo. Cumpleaños, reencuentros familiares, despedidas o paseos de empresa: aquí se permite música alta hasta las 11:00 p. m.</p>
-      <p class="texto">¿Vienen amigos a pasar el día? Pueden recibir visitas durante el día, sin pernoctar y siempre dentro del cupo de 11 personas.</p>
+      <p class="texto">¿Vienen amigos a pasar el día? Pueden recibir visitas durante el día, siempre dentro del cupo de 11 personas. Las visitas no pueden pasar la noche.</p>
     </div>
     <div class="panel panel-salvia">
       <svg viewBox="0 0 24 24" fill="none" stroke="#112F38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 12c-3 0-5.5 3.5-5.5 6 0 1.6 1.4 2.5 3 2 1-.3 1.7-.5 2.5-.5s1.5.2 2.5.5c1.6.5 3-.4 3-2 0-2.5-2.5-6-5.5-6z"/></svg>
@@ -295,8 +380,9 @@
     </div>
     <div class="nota-tarifas">
       <p><strong>Todas las tarifas incluyen desayuno americano</strong>: huevos, chocolate o café, pan o arepa y fruta.</p>
+      <p><strong>Preparación de otras comidas (opcional):</strong> $30.000 por cada comida, para todo el grupo.</p>
       <p><strong>Descuentos por estadía larga:</strong> 20% si te quedas 7 noches o más y 40% si te quedas 28 noches o más. Aplican en temporada baja; las noches de temporada alta no tienen descuento.</p>
-      <p>Entre semana y fin de semana la tarifa incluye hasta 6 personas; cada persona adicional paga $60.000 COP por noche (máximo 11). En temporada alta el precio es el mismo para todo el grupo. Al reservar en línea ves el valor exacto de tus fechas y pagas un anticipo del 50%; el saldo se paga el día de llegada, por transferencia, Nequi o enlace de pago (tarjeta o PSE).</p>
+      <p>Entre semana y fin de semana la tarifa incluye hasta 6 personas; cada persona adicional paga $60.000 COP por noche (máximo 11). En temporada alta el precio es el mismo para todo el grupo. Al reservar en la página ves el valor exacto de tus fechas y nos envías la solicitud por WhatsApp; para confirmar se paga un anticipo del 50%; el saldo se paga el día de llegada, por transferencia, Nequi o enlace de pago (tarjeta o PSE).</p>
       <a class="btn-reservar" href="reservar.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Reservar alojamiento</a>
     </div>
   </div>
@@ -307,7 +393,7 @@
   <div class="contenedor">
     <p class="eyebrow">Reserva en línea</p>
     <h2 class="h2">¿Qué quieres vivir en La María?</h2>
-    <p class="texto" style="margin-top:14px;max-width:640px">Cada experiencia se reserva por separado. Eliges el día, pagas el 50% (o el total) con Bold y listo.</p>
+    <p class="texto" style="margin-top:14px;max-width:640px">Cada experiencia se reserva por separado. Eliges el día, nos envías la solicitud por WhatsApp y pagas el 50% (o el total) para confirmar.</p>
     <div class="opciones-reserva">
       <a class="op-reserva" href="reservar.html">
         <img src="img/logos/alojamiento-negro.png" alt="" loading="lazy">
@@ -318,7 +404,7 @@
       <a class="op-reserva" href="reservar-cabalgata.html">
         <img src="img/logos/cabalgata-negro.png" alt="" loading="lazy">
         <strong>Cabalgata</strong>
-        <span>$120.000 por persona · grupos hasta 25</span>
+        <span>$120.000 por persona · grupos hasta 30</span>
         <em>Reservar →</em>
       </a>
       <a class="op-reserva" href="reservar-caminata.html">
@@ -330,11 +416,11 @@
       <a class="op-reserva" href="reservar-aves.html">
         <img src="img/logos/explora-negro.png" alt="" loading="lazy">
         <strong>Avistamiento de aves</strong>
-        <span>Desde $60.000 por persona · grupos hasta 8</span>
+        <span>Sin guía $60.000 · con guía experto $120.000 por persona · grupos hasta 8</span>
         <em>Reservar →</em>
       </a>
     </div>
-    <p class="nota-reservar">Cabalgata, caminata y avistamiento con guía incluyen hidratación. Almuerzo opcional: patacón o fiambre, $40.000 por persona (los niños también pagan el almuerzo completo). Niños de 6 años o menos pagan la mitad de la caminata y del avistamiento. Avistamiento con guía profesional: reserva con 3 días de anticipación, sujeto a confirmación del guía.</p>
+    <p class="nota-reservar">Cabalgata, caminata y avistamiento con guía incluyen hidratación. Almuerzo opcional: <a class="glosa" href="#" data-glosa="patacon">patacón</a> o <a class="glosa" href="#" data-glosa="fiambre">fiambre</a>, $40.000 por persona (no vendemos medias porciones). Niños de 6 años o menos pagan la mitad de la caminata y del avistamiento. Avistamiento con guía experto: reserva con 3 días de anticipación, sujeto a confirmación del guía.</p>
   </div>
 </section>
 
@@ -343,8 +429,9 @@
   <div class="contenedor dos-col" style="align-items:stretch">
     <div>
       <p class="eyebrow">Cómo llegar</p>
-      <h2 class="h2">A 12 km de El Caimo, Quindío</h2>
-      <p class="texto" style="margin-top:22px">Estamos más cerca de lo que parece en el mapa. Los últimos 10 km son por vía destapada: un poco de paciencia en ese tramo, porque cada curva te acerca a una experiencia que vale la pena. Si vienes en un vehículo bajito, conduce con cuidado; cualquier carro llega sin problema, solo hazlo con calma.</p>
+      <h2 class="h2">A 10 km de El Caimo, Quindío</h2>
+      <p class="texto" style="margin-top:22px">Estamos a 10 km de El Caimo por vía rural, unos 45 minutos desde Armenia. Como toda reserva natural, se llega por carretera de campo: un poco de paciencia en ese tramo, porque cada curva te acerca a una experiencia que vale la pena. Cualquier carro llega sin problema, solo hazlo con calma.</p>
+      <p class="texto"><strong>Te recomendamos llegar de día.</strong> Si vienes de Bogotá, sal temprano para llegar con luz (el ingreso es desde las 9:00 a. m.). Al reservar te enviamos un video del recorrido.</p>
       <div class="horario">
         <div><strong>Ingreso</strong>9:00 a. m.</div>
         <div><strong>Salida</strong>4:00 p. m.</div>
@@ -395,16 +482,19 @@
     <div>
       <details><summary>¿Está incluido el desayuno?</summary><p>Sí. Todas las noches incluyen desayuno americano: huevos, chocolate o café, pan o arepa y fruta. No tiene horario fijo: la persona de la finca que los acompaña se los prepara cuando quieran.</p></details>
       <details><summary>¿Hay descuentos por quedarse más días?</summary><p>Sí: 20% si te quedas 7 noches o más y 40% si te quedas 28 noches o más. El descuento aplica a las noches de temporada baja; en temporada alta el precio es fijo.</p></details>
-      <details><summary>¿Cómo pago el saldo?</summary><p>Al reservar pagas el 50% con Bold. El otro 50% se paga el día de llegada, por transferencia, Nequi o enlace de pago (tarjeta o PSE).</p></details>
-      <details><summary>¿Qué debo traer?</summary><p>Protector solar, repelente, sombrero y zapatos cómodos. El desayuno está incluido; para almuerzos y cenas trae la comida que necesites, además de tus elementos de aseo y agua embotellada: estamos retirados de cualquier comercio.</p></details>
+      <details><summary>¿Cómo pago el saldo?</summary><p>Al reservar pagas el 50% para confirmar. El otro 50% se paga el día de llegada, por transferencia, Nequi o enlace de pago (tarjeta o PSE).</p></details>
+      <details><summary>¿Qué debo traer?</summary><p>Protector solar, repelente, sombrero y zapatos cómodos. El desayuno está incluido; para almuerzos y cenas trae los ingredientes que necesites (si quieres, te preparamos cada comida por $30.000 para todo el grupo), además de tus elementos de aseo y agua embotellada: estamos retirados de cualquier comercio.</p></details>
       <details><summary>¿Qué llevo para la caminata?</summary><p>Botas, repelente, bloqueador solar y ropa de cambio. El recorrido dura unas 2 horas y se arma a la medida del grupo, en el horario que acordemos.</p></details>
       <details><summary>¿Qué llevo para la cabalgata?</summary><p>Pantalón largo, zapatos para el agua, sombrero, repelente, protector solar y ropa de cambio.</p></details>
+      <details><summary>¿Nos pueden preparar las otras comidas?</summary><p>Sí. Tú traes los ingredientes y la persona de la finca que los acompaña les prepara la comida. Cuesta $30.000 por cada comida, para todo el grupo. Escríbenos por WhatsApp para coordinarlo.</p></details>
+      <details><summary>¿Tienen corral para bebé?</summary><p>Sí, tenemos corral para bebé sin costo. Pídelo al reservar.</p></details>
+      <details><summary>¿Hay parqueadero?</summary><p>Sí, hay parqueadero dentro de la finca.</p></details>
       <details><summary>¿Puedo llevar a mi mascota?</summary><p>¡Claro! Solo trae su cama, cobija, toalla y sus juguetes favoritos.</p></details>
       <details><summary>¿Hay wifi y televisión?</summary><p>Sí, pero estamos en el campo y la señal no siempre es estable. Es un buen momento para desconectarte un poco de las pantallas.</p></details>
       <details><summary>¿Se puede fumar?</summary><p>En las zonas exteriores, sí. Dentro de la casa te pedimos evitarlo, por comodidad de todos.</p></details>
       <details><summary>¿Cuál es la política de cancelación?</summary><p>Cancelación gratuita hasta 5 días antes de la llegada. Con menos de 5 días se cobra el 50% del valor de la reserva.</p></details>
       <details><summary>¿Cambian las sábanas?</summary><p>Si tu estadía es larga, renovamos las sábanas a partir del tercer día.</p></details>
-      <details><summary>¿Hay algo que no esté permitido?</summary><p>No uses serpentinas metálicas en las celebraciones: atascan el filtro de la piscina. Y no arrojes papel higiénico ni otros productos al inodoro.</p></details>
+      <details><summary>¿Hay algo que no esté permitido?</summary><ul class="no-permitido"><li>Que las visitas pasen la noche: solo pueden pernoctar los huéspedes de la reserva.</li><li>Las serpentinas metálicas en las celebraciones: atascan el filtro de la piscina.</li><li>Arrojar papel higiénico u otros productos al inodoro.</li><li>El turismo sexual con niños, niñas y adolescentes. Lo rechazamos y lo denunciamos.</li></ul><p class="aviso-ley">La explotación y el abuso sexual de niños, niñas y adolescentes en Colombia son castigados penal y civilmente, conforme a la Ley 679 de 2001 y la Ley 1336 de 2009.</p></details>
     </div>
   </div>
 </section>
@@ -429,7 +519,7 @@
     <div class="pie-cols">
       <div><strong>Contacto</strong>WhatsApp +57 311 397 7479<br>El Caimo, Armenia, Quindío</div>
       <div><strong>Síguenos</strong><a href="https://www.instagram.com/alojamiento_reservanatural" target="_blank" rel="noopener">@alojamiento_reservanatural</a></div>
-      <div class="legal"><strong>Legal</strong>RNT 163429<br>© <span id="anio">2026</span> La María</div>
+      <div class="legal"><strong>Legal</strong>RNT 163429<br><span class="aviso-pie">Rechazamos la explotación y el abuso sexual de niños, niñas y adolescentes (Ley 679 de 2001 y Ley 1336 de 2009).</span><br>© <span id="anio">2026</span> La María</div>
     </div>
   </div>
 </footer>
@@ -438,7 +528,15 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
 </a>
 
-<script src="main.js"></script>
+<dialog class="glosario" id="glosario" aria-labelledby="glosario-titulo">
+  <button class="glosario-cerrar" type="button" aria-label="Cerrar">×</button>
+  <img class="glosario-img" id="glosario-img" alt="" hidden>
+  <h3 id="glosario-titulo"></h3>
+  <p id="glosario-texto"></p>
+  <div class="glosario-links"><a id="glosario-fotos" target="_blank" rel="noopener">Ver fotos →</a><a id="glosario-mas" target="_blank" rel="noopener">Leer más →</a></div>
+</dialog>
+
+<script src="main.js?v=13"></script>
 </body>
 </html>
 

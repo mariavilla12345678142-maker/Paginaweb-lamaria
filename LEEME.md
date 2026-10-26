@@ -22,6 +22,7 @@ Dirección: **https://reservanaturallamaria.com**
 Cada cambio guardado en GitHub se publica solo en Cloudflare en un par de minutos.
 
 ## Pendientes
+- [ ] Faltan en la página cambios del 12 de octubre que no venían en lamaria-web-v2: bloque "Así es el camino" (4 fotos), Zalvia (91 puntos) y la opción "Reseñas" en el menú.
 - [ ] Canalizar TODA la comunicación por WhatsApp (+57 311 397 7479):
   - Avisos de cada reserva a Pilar por WhatsApp (datos del cliente, fechas, valor pagado y saldo).
   - Instagram y Facebook: respuesta automática que mande a los clientes al WhatsApp y botón de WhatsApp en el perfil.

@@ -351,3 +351,79 @@ summary{font-family:var(--serif);font-weight:500;font-size:22px}
 .espacio-fotos figure{margin:0;flex:0 0 auto;width:min(78vw,300px);scroll-snap-align:start}
 .espacio-fotos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radio);display:block}
 .espacio-fotos figcaption{margin-top:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--texto-3)}
+
+/* Antes y ahora */
+.antes-ahora{margin-top:64px;max-width:1080px}
+.antes-ahora-titulo{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,36px);color:var(--petroleo);margin:0 0 6px}
+.antes-ahora>.texto{margin:0 0 28px}
+.pareja{margin-bottom:36px}
+.pareja h4,.recuerdos-titulo{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--petroleo);margin:0 0 12px}
+.recuerdos{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:700px){.recuerdos{grid-template-columns:repeat(3,1fr)}}
+.antes-ahora figure{margin:0;position:relative;border-radius:var(--radio);overflow:hidden;background:var(--petroleo-3)}
+.antes-ahora img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.recuerdos-titulo{margin-top:8px}
+.recuerdos figure{background:var(--blanco);border:1px solid var(--linea)}
+.recuerdos figcaption{padding:10px 14px;font-size:15px;color:var(--texto-3)}
+/* Comparador antes / hoy (barra deslizable) */
+.comparar{position:relative;border-radius:var(--radio);overflow:hidden;aspect-ratio:4/3;background:var(--petroleo-3);max-width:900px;user-select:none;touch-action:pan-y}
+.comparar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+.comparar-antes{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.comparar-linea{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 6px rgba(0,0,0,.4);pointer-events:none}
+.comparar-linea::after{content:"‹ ›";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:var(--petroleo);font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.comparar input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.comparar input[type=range]:focus-visible{opacity:.01}
+.comparar:has(input:focus-visible){outline:3px solid var(--dorado);outline-offset:3px}
+.comparar-etq{position:absolute;top:12px;font-family:var(--serif);font-weight:600;font-size:15px;padding:4px 12px;border-radius:999px;pointer-events:none}
+.etq-antes{left:12px;background:var(--petroleo);color:var(--dorado)}
+.etq-hoy{right:12px;background:var(--dorado);color:var(--petroleo)}
+/* Videos de la piscina (La casa) */
+.videos-casa{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;align-items:end}
+.videos-casa>div{grid-column:1/-1}
+.videos-casa h3{font-family:var(--serif);font-size:clamp(24px,2.6vw,32px);font-weight:600;color:var(--petroleo);margin:0 0 6px}
+.videos-casa video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:var(--radio);background:var(--petroleo-3);display:block}
+@media(min-width:900px){.videos-casa{grid-template-columns:1.2fr 1fr 1fr;gap:20px}.videos-casa>div{grid-column:auto;align-self:center}.videos-casa video{max-height:620px}}
+/* 6 datos rápidos (con cabalgatas) y 5 experiencias */
+@media(min-width:900px){.datos .contenedor{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(min-width:1100px){.tarjetas{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Otras cosas para hacer en tu estadía */
+.otras-cosas{display:grid;gap:22px;align-items:center;background:var(--petroleo-2);border-radius:var(--radio);padding:22px}
+.otras-cosas .foto{aspect-ratio:4/3;border-radius:calc(var(--radio) - 6px);overflow:hidden}
+.otras-cosas .foto img{width:100%;height:100%;object-fit:cover}
+.otras-cosas h4{font-family:var(--serif);font-weight:500;font-size:26px;color:#fff;margin-bottom:8px}
+.otras-cosas p{color:#C9D2C9;font-size:17px;line-height:1.6}
+@media(min-width:760px){.otras-cosas{grid-template-columns:minmax(0,380px) 1fr;gap:36px;padding:26px}}
+
+/* Glosario */
+.glosa{color:inherit;text-decoration:underline dotted;text-decoration-color:var(--dorado,#C8A46A);text-underline-offset:3px;cursor:help}
+.glosa:hover{color:var(--dorado,#C8A46A)}
+.glosario{border:0;border-radius:var(--radio);padding:30px 26px 24px;max-width:440px;width:calc(100% - 32px);background:#FBF8F1;color:#1E3328;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.glosario::backdrop{background:rgba(17,30,25,.55)}
+.glosario h3{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.2;margin:0 28px 10px 0}
+.glosario p{font-size:16px;line-height:1.6;margin:0 0 18px}
+.glosario-links{display:flex;flex-wrap:wrap;gap:18px}
+.glosario-links a{font-weight:600;color:#1E3328;text-decoration:underline;text-underline-offset:3px}
+.glosario-cerrar{position:absolute;top:10px;right:12px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:#1E3328;padding:6px}
+.precio-act{margin-top:12px;font-size:15px;color:var(--dorado,#C8A46A) !important;font-weight:500}
+.no-permitido{margin:0 0 12px 18px;line-height:1.6}
+.no-permitido li{margin-bottom:6px}
+.aviso-ley{font-size:14px;opacity:.85}
+.aviso-pie{display:inline-block;max-width:320px;font-size:12px;opacity:.8;margin:4px 0}
+.banda-aves .btn-listado{margin-left:10px;color:#fff;border-color:rgba(255,255,255,.5)} @media(max-width:520px){.banda-aves .btn-listado{margin:12px 0 0}}
+.glosario-img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;margin:0 0 16px}
+
+/* Portada: fotos que van cambiando */
+.portada-foto.carrusel{position:relative}
+.portada-foto.carrusel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;opacity:0;transition:opacity 1.4s ease}
+.portada-foto.carrusel img.activa{opacity:1}
+@media (prefers-reduced-motion: reduce){.portada-foto.carrusel img{transition:none}}
+/* Foto que se ve completa (sin recortar) */
+.espacio-fotos .foto-completa img{aspect-ratio:9/16;object-fit:cover}
+.otras-cosas + .otras-cosas{margin-top:18px}
+.otras-cosas .foto img[src*="familia"]{object-position:50% 62%}
+
+/* Fotos dentro de un hito de la historia (20 años) */
+.hito-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;max-width:620px}
+.hito-fotos img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radio,10px)}
+@media (max-width:600px){.hito-fotos{gap:6px}}

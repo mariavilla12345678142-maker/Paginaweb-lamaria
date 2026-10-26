@@ -14,12 +14,12 @@
   var CONFIG = {
     anticipo: 0.5,              // mínimo que se paga al reservar (el cliente puede pagar el 100%)
     edadNinos: 6,               // niños de esta edad o menos pagan la mitad (donde aplique)
-    almuerzo: { precio: 40000, opciones: ['Patacón', 'Fiambre'] },   // por persona (los niños pagan completo); todo el grupo come lo mismo
+    almuerzo: { precio: 40000, opciones: ['Patacón', 'Fiambre'] },   // por persona (no se venden medias porciones); todo el grupo come lo mismo
     horarios: ['6:00 a. m.', '7:00 a. m.', '8:00 a. m.', '9:00 a. m.', '10:00 a. m.', '11:00 a. m.',
                '12:00 m.', '1:00 p. m.', '2:00 p. m.', '3:00 p. m.'],
     actividades: {
       cabalgata: {
-        nombre: 'Cabalgata con guía', precio: 120000, max: 25, ninosMitad: false, diasAnticipacion: 1,
+        nombre: 'Cabalgata con guía', precio: 120000, max: 30, ninosMitad: false, diasAnticipacion: 1,
         incluye: 'Hidratación',
       },
       caminata: {
