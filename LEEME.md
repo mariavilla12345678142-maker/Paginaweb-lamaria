@@ -22,7 +22,10 @@ Dirección: **https://reservanaturallamaria.com**
 Cada cambio guardado en GitHub se publica solo en Cloudflare en un par de minutos.
 
 ## Pendientes
-- [ ] Que toda la información de cada reserva (datos del cliente, fechas, valor pagado y saldo) le llegue a Pilar por WhatsApp.
+- [ ] Canalizar TODA la comunicación por WhatsApp (+57 311 397 7479):
+  - Avisos de cada reserva a Pilar por WhatsApp (datos del cliente, fechas, valor pagado y saldo).
+  - Instagram y Facebook: respuesta automática que mande a los clientes al WhatsApp y botón de WhatsApp en el perfil.
+  - Airbnb, Booking, Vrbo y Google Maps: dejar el WhatsApp como contacto principal.
 - [ ] Recuperar el acceso a Bold (cambiar el celular registrado y las llaves) y pegar la llave de identidad en Cloudflare.
 - [ ] Hacer una reserva de prueba y luego pasar a la llave de producción de Bold.
 - [ ] Enlaces de calendario (iCal) de Airbnb, Booking y Vrbo.
