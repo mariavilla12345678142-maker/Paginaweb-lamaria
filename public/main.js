@@ -3,11 +3,14 @@ var WHATSAPP = '573113977479';
 var MENSAJE = 'Hola, quiero consultar disponibilidad en La María';
 // WhatsApp de Jhon (reservas de cabalgatas). Mientras esté vacío, se usa el número principal.
 var WHATSAPP_JHON = '573217568530';
+// WhatsApp de Jaime (contacto en el pie de página)
+var WHATSAPP_JAIME = '573117497827';
 
 // Todos los botones de WhatsApp de la página
 document.querySelectorAll('.js-wa').forEach(function (a) {
   var texto = a.getAttribute('data-mensaje') || MENSAJE;
-  var numero = (a.getAttribute('data-numero') === 'jhon' && WHATSAPP_JHON) ? WHATSAPP_JHON : WHATSAPP;
+  var quien = a.getAttribute('data-numero');
+  var numero = quien === 'jhon' && WHATSAPP_JHON ? WHATSAPP_JHON : quien === 'jaime' ? WHATSAPP_JAIME : WHATSAPP;
   a.href = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(texto);
   a.target = '_blank';
   a.rel = 'noopener';
