@@ -29,4 +29,4 @@ Cada cambio guardado en GitHub se publica solo en Cloudflare en un par de minuto
   - Airbnb, Booking, Vrbo y Google Maps: dejar el WhatsApp como contacto principal.
 - [ ] Recuperar el acceso a Bold (cambiar el celular registrado y las llaves) y pegar la llave de identidad en Cloudflare.
 - [ ] Hacer una reserva de prueba y luego pasar a la llave de producción de Bold.
-- [ ] Enlaces de calendario (iCal) de Airbnb, Booking y Vrbo.
+- [ ] Poner en Cloudflare (Settings → Variables, tipo Secret) los enlaces de calendario de Airbnb, Booking y Vrbo: ICAL_AIRBNB, ICAL_BOOKING, ICAL_VRBO. Los enlaces están en el archivo lamaria-web-v2.zip (OneDrive), dentro de functions/.env. NO subirlos a GitHub: el repositorio es público.
