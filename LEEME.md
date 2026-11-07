@@ -31,6 +31,8 @@ Cada cambio guardado en GitHub se publica solo en Cloudflare en un par de minuto
   - Avisos de cada reserva a Pilar por WhatsApp (datos del cliente, fechas, valor pagado y saldo).
   - Instagram y Facebook: respuesta automática que mande a los clientes al WhatsApp y botón de WhatsApp en el perfil.
   - Airbnb, Booking, Vrbo y Google Maps: dejar el WhatsApp como contacto principal.
-- [ ] Recuperar el acceso a Bold (cambiar el celular registrado y las llaves) y pegar la llave de identidad en Cloudflare.
-- [ ] Hacer una reserva de prueba y luego pasar a la llave de producción de Bold.
+- [x] Llaves de PRUEBAS de Bold puestas en Cloudflare (7 nov 2026).
+- [ ] Cambiar en Bold el usuario de contacto (hoy aparece Yamileth Torijano Franco).
+- [ ] Hacer una reserva de prueba con las llaves de pruebas y luego cambiar a las llaves de producción de Bold en Cloudflare.
+- [ ] Registrar el webhook en Bold (Integraciones → Webhooks): https://reservanaturallamaria.com/api/bold-webhook
 - [ ] Poner en Cloudflare (Settings → Variables, tipo Secret) los enlaces de calendario de Airbnb, Booking y Vrbo: ICAL_AIRBNB, ICAL_BOOKING, ICAL_VRBO. Los enlaces están en el archivo lamaria-web-v2.zip (OneDrive), dentro de functions/.env. NO subirlos a GitHub: el repositorio es público.
