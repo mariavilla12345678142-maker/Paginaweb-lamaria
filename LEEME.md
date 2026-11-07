@@ -22,6 +22,8 @@ Dirección: **https://reservanaturallamaria.com**
 Cada cambio guardado en GitHub se publica solo en Cloudflare en un par de minutos.
 
 ## Pendientes
+- [ ] Igualar precios en Airbnb, Booking y Vrbo con la página (el cliente paga lo mismo en todas; la comisión la asume Pilar). Totales de prueba: martes 24 nov 2026, 6 personas = $900.000; viernes 27 nov, 6 personas = $1.250.000; martes 24 nov, 8 personas = $1.020.000; 21 al 23 dic, 11 personas = $3.464.000.
+- [ ] Booking (revisado el 7 nov 2026): sale "no disponible" en todas las fechas probadas (nov, dic, ene) y dice 5 baños en vez de 6. Revisar el calendario y los precios.
 - [ ] Faltan en la página cambios del 12 de octubre que no venían en lamaria-web-v2: bloque "Así es el camino" (4 fotos), Zalvia (91 puntos) y la opción "Reseñas" en el menú.
 - [ ] Canalizar TODA la comunicación por WhatsApp (+57 311 397 7479):
   - Avisos de cada reserva a Pilar por WhatsApp (datos del cliente, fechas, valor pagado y saldo).
