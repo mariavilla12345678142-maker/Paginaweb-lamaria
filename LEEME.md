@@ -4,14 +4,16 @@ Dirección: **https://reservanaturallamaria.com**
 
 ## Qué hay aquí
 - `public/` → la página web (textos, fotos, estilos). Precios del alojamiento en `public/js/tarifas.js` y de las actividades en `public/js/actividades.js`.
-- `functions/api/` y `lib/` → el "motor" de reservas que corre en Cloudflare: calcula el precio, aparta las fechas, crea el link de pago de **Bold** y confirma el pago.
+- `functions/api/` y `lib/` → el "motor" de reservas que corre en Cloudflare: calcula el precio, aparta las fechas, prepara el **Botón de pagos de Bold** (con la firma de integridad) y confirma el pago.
+- Los pagos en línea se encienden solos cuando las dos llaves de Bold están puestas en Cloudflare. Sin ellas, las reservas se envían por WhatsApp. Las cabalgatas siempre van por WhatsApp con Jhon.
 - `public/admin.html` → panel privado para ver las reservas (pide la clave `CLAVE_ADMIN`).
 
 ## Configuración en Cloudflare (Workers y Pages → proyecto de la página)
 - Compilación: sin comando de compilación · carpeta de salida `public`.
 - Enlace KV con el nombre **RESERVAS**.
 - Variables y secretos:
-  - `BOLD_LLAVE_IDENTIDAD` (secreto): llave de identidad de Bold (la de pruebas para probar, la de producción para cobrar de verdad).
+  - `BOLD_LLAVE_IDENTIDAD` (secreto): llave de identidad del Botón de pagos de Bold.
+  - `BOLD_LLAVE_SECRETA` (secreto): llave secreta del Botón de pagos de Bold.
   - `SITIO_URL`: `https://reservanaturallamaria.com`
   - `CLAVE_ADMIN` (secreto): clave del panel de reservas.
   - `ICAL_AIRBNB`, `ICAL_BOOKING`, `ICAL_VRBO` (opcionales): enlaces de calendario para bloquear las fechas ya reservadas en esas plataformas.

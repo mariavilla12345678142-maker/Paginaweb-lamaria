@@ -2,7 +2,7 @@
 import Actividades from '../../public/js/actividades.js';
 import Tarifas from '../../public/js/tarifas.js';
 import {
-  json, hoyColombia, fechaLarga, nuevaReferencia, limpiar, revisarCliente, datosCliente, crearLinkBold, guardar, urlSitio,
+  json, hoyColombia, fechaLarga, nuevaReferencia, limpiar, revisarCliente, datosCliente, prepararBoton, guardar, urlSitio,
 } from '../../lib/comun.js';
 
 export async function onRequestPost({ request, env }) {
@@ -31,17 +31,18 @@ export async function onRequestPost({ request, env }) {
     comentarios: limpiar(d.comentarios, 600),
   };
 
+  let boton;
   try {
     const sitio = urlSitio(env, request);
-    reg.pago = await crearLinkBold(env, {
-      referencia, total: c.pagar, email: cliente.email,
+    boton = await prepararBoton(env, {
+      referencia, total: c.pagar, cliente, sitio,
       descripcion: (c.pagoCompleto ? 'Pago total ' : 'Anticipo 50% ') + c.nombre + ' ' + d.fecha + ' (' + referencia + ')',
-      volverA: sitio + '/confirmacion.html?ref=' + referencia,
     });
+    reg.pago = { orderId: referencia, monto: Number(boton.amount) };
   } catch (e) {
     console.error(e);
     return json({ ok: false, error: 'No pudimos conectar con Bold. Intenta de nuevo en un momento o escríbenos por WhatsApp.' }, 502);
   }
   await guardar(env, reg);
-  return json({ ok: true, referencia, urlPago: reg.pago.url });
+  return json({ ok: true, referencia, boton });
 }

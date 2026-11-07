@@ -4,7 +4,7 @@
   var A = window.Actividades, C = A.CONFIG;
   var WHATSAPP = '573113977479';
   var WHATSAPP_JHON = '573217568530';   // WhatsApp de Jhon (cabalgatas). Vacío = número principal
-  // false = aún sin pasarela de pagos: la reserva se envía por WhatsApp. true = pago en línea (Bold).
+  // Se enciende solo cuando las llaves de Bold están puestas en Cloudflare (ver js/bold.js).
   var PAGOS_EN_LINEA = false;
   var $ = function (id) { return document.getElementById(id); };
   var clave = document.body.getAttribute('data-actividad');
@@ -92,11 +92,20 @@
   document.querySelectorAll('input[name="modalidad"]').forEach(function (r) { r.addEventListener('change', function () { ajustarFechaMinima(); actualizar(); }); });
   $('como-supo').addEventListener('change', function () { $('campo-como-supo-otro').hidden = this.value !== 'Otro'; });
   $('almuerzo-precio').textContent = A.pesos(C.almuerzo.precio);
-  if (!PAGOS_EN_LINEA) {
-    document.querySelectorAll('.politicas h3').forEach(function (h) { if (h.textContent === 'Antes de pagar') h.textContent = 'Antes de reservar'; });
-    document.querySelectorAll('.subpaso').forEach(function (h) { if (h.textContent === '¿Cuánto quieres pagar hoy?') h.textContent = '¿Cuánto quieres pagar para confirmar?'; });
-    var seg = document.querySelector('.seguro');
-    if (seg) seg.textContent = 'Al enviar se abre WhatsApp con tu solicitud. Te confirmamos la disponibilidad y te enviamos los datos para el pago (transferencia, Nequi o enlace de pago).';
+  // Mientras no estén las llaves de Bold, la reserva se envía por WhatsApp.
+  // La cabalgata siempre se reserva por WhatsApp con Jhon.
+  var textosPago = [];
+  function cambiarTexto(el, texto) { if (el) { textosPago.push([el, el.textContent]); el.textContent = texto; } }
+  document.querySelectorAll('.politicas h3').forEach(function (h) { if (h.textContent === 'Antes de pagar') cambiarTexto(h, 'Antes de reservar'); });
+  document.querySelectorAll('.subpaso').forEach(function (h) { if (h.textContent === '¿Cuánto quieres pagar hoy?') cambiarTexto(h, '¿Cuánto quieres pagar para confirmar?'); });
+  cambiarTexto(document.querySelector('.seguro'), 'Al enviar se abre WhatsApp con tu solicitud. Te confirmamos la disponibilidad y te enviamos los datos para el pago (transferencia, Nequi o enlace de pago).');
+  if (clave !== 'cabalgata') {
+    window.LaMariaPagos.activos.then(function (si) {
+      if (!si) return;
+      PAGOS_EN_LINEA = true;
+      textosPago.forEach(function (t) { t[0].textContent = t[1]; });
+      actualizar();
+    });
   }
   ajustarFechaMinima();
   actualizar();
@@ -142,11 +151,11 @@
       .then(function (j) {
         if (!j.ok) { estado.enviando = false; actualizar(); return mostrarError(j.error || 'No pudimos crear la reserva.'); }
         try { sessionStorage.setItem('lamaria_ref', j.referencia); } catch (e) {}
-        location.href = j.urlPago;
+        window.LaMariaPagos.abrir(j.boton, function (msg) { estado.enviando = false; actualizar(); mostrarError(msg); });
       })
       .catch(function () {
         estado.enviando = false; actualizar();
-        mostrarError('Esta es una vista de demostración: cuando la página esté publicada, este botón te lleva a Bold para pagar ' + A.pesos(estado.cot.pagar) + '.');
+        mostrarError('No hay conexión. Intenta de nuevo o escríbenos por WhatsApp.');
       });
   });
 })();

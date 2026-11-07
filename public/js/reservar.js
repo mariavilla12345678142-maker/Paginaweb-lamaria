@@ -3,7 +3,7 @@
   'use strict';
   var T = window.Tarifas;
   var WHATSAPP = '573113977479';
-  // false = aún sin pasarela de pagos: la reserva se envía por WhatsApp. true = pago en línea (Bold).
+  // Se enciende solo cuando las llaves de Bold están puestas en Cloudflare (ver js/bold.js).
   var PAGOS_EN_LINEA = false;
   var MESES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   var DIAS = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -212,17 +212,25 @@
           actualizar(); return mostrarError(x.j.error || 'No pudimos crear la reserva.');
         }
         try { sessionStorage.setItem('lamaria_ref', x.j.referencia); } catch (e) { /* sin almacenamiento */ }
-        window.location.href = x.j.urlPago;
+        window.LaMariaPagos.abrir(x.j.boton, function (msg) { estado.enviando = false; actualizar(); mostrarError(msg); });
       })
       .catch(function () { estado.enviando = false; actualizar(); mostrarError('No hay conexión. Intenta de nuevo o escríbenos por WhatsApp.'); });
   });
 
-  if (!PAGOS_EN_LINEA) modoWhatsApp();
+  // Mientras no estén las llaves de Bold, la reserva se envía por WhatsApp
+  var textosPago = [];
+  function cambiarTexto(el, texto) { if (el) { textosPago.push([el, el.textContent]); el.textContent = texto; } }
   function modoWhatsApp() {
-    document.querySelectorAll('.politicas h3').forEach(function (h) { if (h.textContent === 'Antes de pagar') h.textContent = 'Antes de reservar'; });
-    var seg = document.querySelector('.seguro');
-    if (seg) seg.textContent = 'Al enviar se abre WhatsApp con tu solicitud. Te confirmamos la disponibilidad y te enviamos los datos para pagar el anticipo del 50% (transferencia, Nequi o enlace de pago).';
-    var et = document.querySelector('.linea.anticipo span'); if (et) et.textContent = 'Anticipo para confirmar (50%)';
+    document.querySelectorAll('.politicas h3').forEach(function (h) { if (h.textContent === 'Antes de pagar') cambiarTexto(h, 'Antes de reservar'); });
+    cambiarTexto(document.querySelector('.seguro'), 'Al enviar se abre WhatsApp con tu solicitud. Te confirmamos la disponibilidad y te enviamos los datos para pagar el anticipo del 50% (transferencia, Nequi o enlace de pago).');
+    cambiarTexto(document.querySelector('.linea.anticipo span'), 'Anticipo para confirmar (50%)');
   }
+  modoWhatsApp();
   cargar();
+  window.LaMariaPagos.activos.then(function (si) {
+    if (!si) return;
+    PAGOS_EN_LINEA = true;
+    textosPago.forEach(function (t) { t[0].textContent = t[1]; });
+    cargar();
+  });
 })();

@@ -22,7 +22,7 @@
   .estado { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 13px; font-weight: 600; }
   .confirmada { background: #DCF2E3; color: #145A2C; }
   .esperando_pago { background: #FFF2CC; color: #7A5600; }
-  .rechazada, .vencida { background: #F6DADA; color: #7D1F1F; }
+  .rechazada, .vencida, .anulada, .revisar { background: #F6DADA; color: #7D1F1F; }
   .vacio, .error { padding: 20px; text-align: center; }
   .error { color: #7D1F1F; }
   a { color: var(--verde); }
@@ -48,7 +48,7 @@
   var datos = [];
   function pesos(n) { return '$' + Math.round(n || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  var NOMBRES = { confirmada: 'Pagada', esperando_pago: 'Esperando pago', rechazada: 'Pago rechazado', vencida: 'No pagó (vencida)' };
+  var NOMBRES = { confirmada: 'Pagada', esperando_pago: 'Esperando pago', rechazada: 'Pago rechazado', vencida: 'No pagó (vencida)', anulada: 'Pago anulado', revisar: 'Revisar: monto distinto' };
 
   function pintar() {
     var filtro = document.getElementById('filtro').value;

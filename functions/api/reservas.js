@@ -2,7 +2,7 @@
 import Tarifas from '../../public/js/tarifas.js';
 import {
   json, hoyColombia, nuevaReferencia, limpiar, revisarCliente, datosCliente,
-  crearLinkBold, guardar, nochesOcupadas, urlSitio,
+  prepararBoton, guardar, nochesOcupadas, urlSitio,
 } from '../../lib/comun.js';
 
 export async function onRequestPost({ request, env }) {
@@ -33,17 +33,18 @@ export async function onRequestPost({ request, env }) {
     comentarios: limpiar(d.comentarios, 600),
   };
 
+  let boton;
   try {
     const sitio = urlSitio(env, request);
-    reg.pago = await crearLinkBold(env, {
-      referencia, total: c.anticipo, email: cliente.email,
+    boton = await prepararBoton(env, {
+      referencia, total: c.anticipo, cliente, sitio,
       descripcion: 'Anticipo 50% alojamiento La María ' + d.llegada + ' a ' + d.salida + ' (' + referencia + ')',
-      volverA: sitio + '/confirmacion.html?ref=' + referencia,
     });
+    reg.pago = { orderId: referencia, monto: Number(boton.amount) };
   } catch (e) {
     console.error(e);
     return json({ ok: false, error: 'No pudimos conectar con Bold. Intenta de nuevo en un momento o escríbenos por WhatsApp.' }, 502);
   }
   await guardar(env, reg);
-  return json({ ok: true, referencia, urlPago: reg.pago.url });
+  return json({ ok: true, referencia, boton });
 }

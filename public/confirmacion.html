@@ -32,7 +32,7 @@
 (function () {
   var T = window.Tarifas, WA = 'https://wa.me/573113977479?text=';
   var q = new URLSearchParams(location.search);
-  var id = q.get('id'), ref = q.get('ref');
+  var id = null, ref = q.get('ref') || q.get('bold-order-id');
   try { ref = ref || sessionStorage.getItem('lamaria_ref'); } catch (e) {}
   var intentos = 0;
   var ICONOS = {
